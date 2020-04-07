@@ -10,14 +10,14 @@
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in pages"
           :key="i"
-          :to="item.to"
+          @click="$router.push({ name: item.route })"
           router
           exact
         >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon v-text="item.icon"></v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
@@ -89,6 +89,17 @@
 						</v-list-item>
 						
 						<v-divider></v-divider>
+
+            <v-list-item 
+              @click="$router.push({ name: item.route })"
+              v-for="(item, i) in subpages" :key="i">
+              <v-list-item-action>
+                <v-icon small v-text="item.icon"></v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.title"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
 						
 						<v-list-item @click="">
 							<v-list-item-action>
@@ -113,17 +124,24 @@ export default {
 		avatar: 'https://ui-avatars.com/api/?name=Carlo+Doe',
     clipped: false,
     drawer: true,
-    items: [
+    pages: [
       {
         icon: 'mdi-apps',
-        title: 'Welcome',
-        to: '/'
+        title: 'Dashboard',
+        route: 'dashboard'
       },
       {
-        icon: 'mdi-chart-bubble',
-        title: 'Inspire',
-        to: '/inspire'
+        icon: 'mdi-account-group-outline',
+        title: 'Users',
+        route: 'users'
       }
+    ],
+    subpages: [
+      {
+        icon: 'mdi-cog-outline',
+        title: 'Settings',
+        route: 'settings'
+      },
     ],
     miniVariant: false,
   })
