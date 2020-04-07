@@ -6,6 +6,7 @@
       <div class="app-background">
         <v-container>
           <nuxt />
+          <div class="mb-10 pb-10"></div>
         </v-container>
       </div>
     </v-content>
@@ -46,7 +47,7 @@ html {
 
 .app-background {
   width: 100%;
-  height: 20rem;
+  height: 25rem;
   background-color: #1976d2;
 }
 </style>
