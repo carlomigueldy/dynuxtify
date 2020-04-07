@@ -61,7 +61,7 @@
         <v-icon>mdi-bell</v-icon>
       </v-btn>
       
-			<v-menu max-height="500" offset-y>
+			<v-menu style="border-radius: 0" max-height="500" offset-y>
 				<template v-slot:activator="{ on }">
 					<v-btn v-on="on" icon>
 						<v-avatar size="35">
@@ -69,7 +69,7 @@
 						</v-avatar>
 					</v-btn>
 				</template>
-				<v-card width="300" flat>
+				<v-card width="300" tile flat>
 					<v-list>
 						
 						<v-list-item>
