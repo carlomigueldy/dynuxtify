@@ -11,10 +11,14 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "@mdi/font": "^5.0.45",
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "apexcharts": "^3.18.1",
+    "nuxt": "^2.0.0",
+    "vue-apexcharts": "^1.5.3",
+    "vue-number-animation": "^1.0.5"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"

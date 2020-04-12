@@ -1,17 +1,17 @@
 <template>
   <div>
-    <span class="bg"></span>
+    <!-- <span class="bg"></span> -->
     <v-app app>
-      <v-content app>
+      <v-content class="primary" app>
         <v-container fill-height>
           <v-row 
             justify="center" 
             align="center"
             class="mx-auto">
             <v-col 
-              lg="5"
-              md="6"
-              sm="8"
+              lg="12"
+              md="12"
+              sm="12"
               cols="12"
               >
               <SignIn />

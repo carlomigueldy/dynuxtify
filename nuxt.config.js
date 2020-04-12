@@ -30,6 +30,10 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/main',
+    '@/plugins/mdi',
+    '@/plugins/vue-apex-charts',
+    '@/plugins/vue-number-animation',
   ],
   /*
   ** Nuxt.js dev-modules

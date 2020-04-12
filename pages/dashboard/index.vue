@@ -10,28 +10,21 @@
 
         <v-row class="mb-10">
           <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card>
+            <v-card height="100%">
               <v-card-text>
-                <v-card
-                  flat
-                  height="200"
-                ></v-card>
+                <BarChart />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Sales</v-card-title>
               <v-card-text>
-                Some cool information
+                Sales information
               </v-card-text>
             </v-card>
           </v-col>
           <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card>
+            <v-card height="100%">
               <v-card-text>
-                <v-card
-                  flat
-                  height="200"
-                >
-                </v-card>
+                <LineChart />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Overview</v-card-title>
@@ -46,13 +39,9 @@
 
         <v-row class="mb-10">
           <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card color="purple lighten-2" dark>
+            <v-card height="100%">
               <v-card-text>
-                <v-card
-                  color="transparent"
-                  flat
-                  height="200"
-                ></v-card>
+                <ScatterChart />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Sales</v-card-title>
@@ -62,14 +51,9 @@
             </v-card>
           </v-col>
           <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card color="orange darken-4" dark>
+            <v-card height="100%">
               <v-card-text>
-                <v-card
-                  color="transparent"
-                  flat
-                  height="200"
-                >
-                </v-card>
+                <AreaChart />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Overview</v-card-title>
@@ -84,7 +68,7 @@
 
         <v-row class="mb-10">
           <v-col>
-            <v-card>
+            <v-card height="100%">
               <v-card-title>Calendar</v-card-title>
               <v-card-text>
                 <Calendar />
@@ -100,10 +84,18 @@
 
 <script>
 import Calendar from '@/components/calendar/Calendar'
+import BarChart from '@/components/charts/BarChart'
+import LineChart from '@/components/charts/LineChart'
+import ScatterChart from '@/components/charts/ScatterChart'
+import AreaChart from '@/components/charts/AreaChart'
 
 export default {
   components: {
-    Calendar
+    Calendar,
+    BarChart,
+    LineChart,
+    ScatterChart,
+    AreaChart,
   },
   
   data: () => ({
