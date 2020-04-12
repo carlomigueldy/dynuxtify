@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="transparent" flat>
+    <v-toolbar color="transparent" dark flat>
       <v-toolbar-title>
         <h2 
           class="font-weight-medium">
@@ -23,7 +23,8 @@
       </v-menu>
     </v-toolbar>
     <v-tabs 
-      background-color="grey lighten-4" 
+      dark
+      background-color="primary" 
       show-arrows
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>
@@ -54,8 +55,8 @@
               <DataTable 
                 title="Users"
                 route="users"
-                :items="users"
-                :headers="headers"
+                :items="posts"
+                :headers="post_headers"
               />
             </v-tab-item>
             <v-tab-item>
@@ -78,14 +79,10 @@ import DataTable from '@/components/users/DataTable'
 import axios from 'axios'
 
 export default {
-  layout: 'light',
+  async fetch () {
 
-  // async fetch() {
-  //   await setTimeout(async() => {
-  //     console.log('Hehe')
-  //   }, 3000)
-  // },
-  
+  },
+
   components: {
     DataTable,
   },

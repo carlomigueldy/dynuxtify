@@ -102,10 +102,10 @@
 										<v-img :src="avatar"></v-img>
 									</v-avatar>
 									<div class="mt-5 title font-weight-regular">
-										Carlo Miguel Dy
+										{{ user.name || 'Not Specified' }}
 									</div>
 									<div class="subtitle-2 font-weight-regular">
-										Admin
+										{{ user.email || 'Not Specified' }}
 									</div>
 								</div>
 							</v-list-item-content>
@@ -124,7 +124,7 @@
               </v-list-item-content>
             </v-list-item>
 						
-						<v-list-item>
+						<v-list-item @click="logout()">
 							<v-list-item-action>
 								<v-icon small>mdi-logout</v-icon>
 							</v-list-item-action>
@@ -161,6 +161,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     color: {
@@ -182,6 +184,24 @@ export default {
       type: Boolean,
       default: () => true,
     }
+  },
+
+  methods: {
+    async logout() {
+      try {
+        await this.$auth.logout()
+
+        await this.$router.push({ name: 'login' })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters({
+      user: 'GET_AUTH_USER'
+    })
   },
   
 	data: () => ({

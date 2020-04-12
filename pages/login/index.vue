@@ -27,11 +27,13 @@
 import SignIn from '@/components/auth/SignIn'
 
 export default {
+  auth: 'guest',
+  
   layout: 'none',
   
   components: {
     SignIn,
-  }
+  },
 }
 </script>
 

@@ -3,8 +3,7 @@
     <AuthNav />
 
     <v-content class="grey lighten-4" app>
-      <div class="app-background">
-      </div>
+      <div class="app-background primary"></div>
       <v-container>
         <nuxt />
         <div class="mb-10 pb-10"></div>
@@ -26,6 +25,8 @@
 import AuthNav from '@/components/layouts/AuthNav'
 
 export default {
+  middleware: 'auth',
+  
   components: {
     AuthNav
   },
@@ -47,8 +48,8 @@ html {
 
 .app-background {
   width: 100%;
-  height: 25rem;
-  background-color: #1976d2;
+  height: 30rem;
+  /* background-color: #1976d2; */
   position: absolute;
 }
 </style>

@@ -26,6 +26,17 @@ export default {
     throttle: 0,
     continuous: true,
   },
+
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
+  },
+
+  layoutTransition: {
+    name: 'fade',
+    mode: 'out-in'
+  },
+
   /*
   ** Global CSS
   */
@@ -51,6 +62,7 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/auth',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
@@ -61,6 +73,23 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: process.env.BASE_URL,
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/auth/me', method: 'post', propertyName: 'data' }
+        },
+        autoFetchUser: false,
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+        // autoFetchUser: true
+      }
+    }
   },
   /*
   ** vuetify module configuration
@@ -96,5 +125,9 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
   }
 }
