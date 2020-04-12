@@ -1,13 +1,12 @@
 <template>
   <div>
-      <v-navigation-drawer
+    <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
-      color="blue-grey darken-4"
-      dark
+      :color="color"
+      :dark="dark"
       fixed
-      app
-    >
+      app>
       <v-list>
         <v-list-item
           v-for="(item, i) in pages"
@@ -36,13 +35,12 @@
     </v-navigation-drawer>
 
     <v-app-bar
-      color="primary"
+      :color=toolbarColor
       :elevate-on-scroll="true"
-      dark
+      :dark="toolbarDark"
       fixed
       dense
-      app
-    >
+    app    >
       <v-app-bar-nav-icon 
         @click.stop="drawer = !drawer" 
       />
@@ -53,11 +51,28 @@
 
       <v-spacer />
 
-			<v-btn icon>
+			<v-btn 
+        v-if="!toggleSearch"
+        @click="toggleSearch = !toggleSearch" 
+        icon>
 				<v-icon>mdi-magnify</v-icon>
 			</v-btn>
+      <v-col 
+        v-else
+        lg="5"
+        md="6"
+        sm="4"
+        cols="6">
+        <v-text-field
+          placeholder="Search"
+          @blur="toggleSearch = !toggleSearch"
+          append-icon="mdi-magnify"
+          hide-details
+          clearble
+        ></v-text-field>
+      </v-col>
 
-      <v-btn icon>
+      <v-btn @click="notifDrawer = !notifDrawer" icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>
       
@@ -101,7 +116,7 @@
               </v-list-item-content>
             </v-list-item>
 						
-						<v-list-item @click="">
+						<v-list-item>
 							<v-list-item-action>
 								<v-icon small>mdi-logout</v-icon>
 							</v-list-item-action>
@@ -114,16 +129,61 @@
 			</v-menu>
       
     </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="notifDrawer"
+      width="400"
+      temporary
+      right
+      app>
+      <v-toolbar 
+        color="primary" 
+        dark 
+        dense>
+        <v-toolbar-title>Alerts</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn 
+          icon
+          @click="notifDrawer = !notifDrawer">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-toolbar>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    color: {
+      type: String,
+      default: () => 'blue-grey darken-4',
+    },
+
+    dark: {
+      type: Boolean,
+      default: () => true,
+    },
+
+    toolbarColor: {
+      type: String,
+      default: () => 'primary',
+    },
+
+    toolbarDark: {
+      type: Boolean,
+      default: () => true,
+    }
+  },
+  
 	data: () => ({
 		title: 'dynuxtiy',
 		avatar: 'https://ui-avatars.com/api/?name=Carlo+Doe',
     clipped: false,
     drawer: true,
+    miniVariant: false,
+    toggleSearch: false,
+    notifDrawer: false,
     pages: [
       {
         icon: 'mdi-apps',
@@ -131,7 +191,7 @@ export default {
         route: 'dashboard'
       },
       {
-        icon: 'mdi-account-group-outline',
+        icon: 'mdi-account-multiple',
         title: 'Users',
         route: 'users'
       }
@@ -143,7 +203,6 @@ export default {
         route: 'settings'
       },
     ],
-    miniVariant: false,
   })
 }
 </script>

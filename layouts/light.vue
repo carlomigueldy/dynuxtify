@@ -1,14 +1,15 @@
 <template>
   <v-app dark>
-    <AuthNav />
+    <AuthNav 
+      toolbarColor="grey lighten-4"
+      :toolbarDark="false"
+    />
 
-    <v-content app>
-      <div class="app-background">
-        <v-container>
-          <nuxt />
-          <div class="mb-10 pb-10"></div>
-        </v-container>
-      </div>
+    <v-content class="grey lighten-4" app>
+      <v-container >
+        <nuxt keep-alive />
+        <div class="mb-10 pb-10"></div>
+      </v-container>
     </v-content>
 
     <!-- <v-footer

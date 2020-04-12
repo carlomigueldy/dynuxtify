@@ -1,39 +1,55 @@
 <template>
   <div>
-    <v-card tile>
+    <v-card flat>
       <v-toolbar color="transparent" flat>
         <v-text-field
-          append-icon="mdi-magnify"
+          prepend-inner-icon="mdi-magnify"
           v-model="search"
-          label="Filter"
+          label="Search by name, email, username or user ID"
+          solo
+          flat
+          single-line
           hide-details
           clearable
         ></v-text-field>
         <v-toolbar-title></v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn 
-          tile
           color="primary"
           @click="$router.push({ name: `${route}-create` })"
           text>
-          <v-icon left>mdi-plus-circle-outline</v-icon>
-          Add {{ title }}
+          <v-icon small left>mdi-plus-circle-outline</v-icon>
+          Add User
         </v-btn>
 
         <v-menu 
+          v-model="dateFilterMenu"
           :close-on-content-click="false"
           offset-y>
           <template v-slot:activator="{ on }">
             <v-btn 
               color="primary" 
               v-on="on"
-              tile 
               text>
-              <v-icon left>mdi-filter-outline</v-icon>
+              <v-icon small left>mdi-filter-outline</v-icon>
               Date Filter
             </v-btn>
           </template>
           <v-card tile>
+            <v-toolbar color="transparent" dense flat>
+              <v-toolbar-title>
+                <div class="caption">
+                  Filter by Date Range
+                </div>
+              </v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn 
+                icon
+                small
+                @click="dateFilterMenu = false">
+                <v-icon small>mdi-close</v-icon>
+              </v-btn>
+            </v-toolbar>
             <v-card-text>
               <v-text-field
                 v-model="fromDate"
@@ -57,7 +73,12 @@
             </v-card-actions>
           </v-card>
         </v-menu>
-        
+        <v-btn 
+          @click="reload()"
+          :loading="refreshing" 
+          icon>
+          <v-icon>mdi-refresh</v-icon>
+        </v-btn>
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" icon>
@@ -94,6 +115,7 @@
         :headers="headers"
         :search="search"
         :items="items"
+        multi-sort
       >
         <template v-slot:item.actions="{ item }">
           <v-btn icon>
@@ -130,15 +152,12 @@ export default {
   },
 
   data: () => ({
+    refreshing: false,
+    dateFilterMenu: false,
     fromDate: null,
     toDate: null,
     search: null,
     options: [
-      {
-        ref: 'refresh',
-        title: 'Refresh',
-        icon: 'mdi-refresh',
-      },
       {
         ref: 'pdf',
         title: 'Export to PDF',
@@ -158,6 +177,13 @@ export default {
   }),
 
   methods: {
+    reload() {
+      this.refreshing = true
+      setTimeout(() => {
+        this.refreshing = false
+      }, 1000)
+    },
+    
     clearAllFilter() {
       this.search = null
       this.fromDate = null

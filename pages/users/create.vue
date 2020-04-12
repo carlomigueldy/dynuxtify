@@ -12,19 +12,16 @@
       </v-toolbar-title>
     </v-toolbar>
 
-    <v-row>
-      <v-col lg="1" md="1" sm="12" cols="12"></v-col>
-      <v-col lg="10" md="10" sm="12" cols="12">
-        <v-card tile>
+    <v-row justify="center" align="center">
+      <v-col lg="11" md="11" sm="12" cols="12">
+        <v-card>
           <v-card-text>
             <v-text-field
               label="First Name"
-              outlined
             ></v-text-field>
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col lg="1" md="1" sm="12" cols="12"></v-col>
     </v-row>
   </div>
 </template>
