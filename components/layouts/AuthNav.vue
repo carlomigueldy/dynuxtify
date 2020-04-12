@@ -186,7 +186,7 @@ export default {
     notifDrawer: false,
     pages: [
       {
-        icon: 'mdi-apps',
+        icon: 'mdi-view-dashboard',
         title: 'Dashboard',
         route: 'dashboard'
       },

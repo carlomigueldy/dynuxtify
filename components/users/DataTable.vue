@@ -28,11 +28,9 @@
           offset-y>
           <template v-slot:activator="{ on }">
             <v-btn 
-              color="primary" 
               v-on="on"
-              text>
-              <v-icon small left>mdi-filter-outline</v-icon>
-              Date Filter
+              icon>
+              <v-icon>mdi-filter-outline</v-icon>
             </v-btn>
           </template>
           <v-card tile>
