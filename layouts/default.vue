@@ -2,13 +2,13 @@
   <v-app dark>
     <AuthNav />
 
-    <v-content app>
+    <v-content class="grey lighten-4" app>
       <div class="app-background">
-        <v-container>
-          <nuxt />
-          <div class="mb-10 pb-10"></div>
-        </v-container>
       </div>
+      <v-container>
+        <nuxt />
+        <div class="mb-10 pb-10"></div>
+      </v-container>
     </v-content>
 
     <!-- <v-footer
@@ -49,5 +49,6 @@ html {
   width: 100%;
   height: 25rem;
   background-color: #1976d2;
+  position: absolute;
 }
 </style>

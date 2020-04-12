@@ -79,6 +79,12 @@ import axios from 'axios'
 
 export default {
   layout: 'light',
+
+  // async fetch() {
+  //   await setTimeout(async() => {
+  //     console.log('Hehe')
+  //   }, 3000)
+  // },
   
   components: {
     DataTable,

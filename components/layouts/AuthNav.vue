@@ -11,9 +11,8 @@
         <v-list-item
           v-for="(item, i) in pages"
           :key="i"
-          @click="$router.push({ name: item.route })"
-          router
-          exact
+          :to="{ name: item.route }"
+          link
         >
           <v-list-item-action>
             <v-icon v-text="item.icon"></v-icon>
@@ -50,6 +49,15 @@
       />
 
       <v-spacer />
+
+      <v-chip 
+        v-if="$nuxt.isOffline"
+        color="red darken-2"
+        label 
+        dark>
+        <v-icon small left>mdi-alert-circle-outline</v-icon>
+        You are offline
+      </v-chip>
 
 			<v-btn 
         v-if="!toggleSearch"
@@ -177,7 +185,7 @@ export default {
   },
   
 	data: () => ({
-		title: 'dynuxtiy',
+		title: 'App Name',
 		avatar: 'https://ui-avatars.com/api/?name=Carlo+Doe',
     clipped: false,
     drawer: true,
