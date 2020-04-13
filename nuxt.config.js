@@ -89,7 +89,8 @@ export default {
         // tokenType: 'bearer'
         // autoFetchUser: true
       }
-    }
+    },
+    redirect: false,
   },
   /*
   ** vuetify module configuration
