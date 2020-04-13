@@ -27,7 +27,7 @@
 import SignIn from '@/components/auth/SignIn'
 
 export default {
-  auth: 'guest',
+  middleware: 'guest',
   
   layout: 'none',
   
