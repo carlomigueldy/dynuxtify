@@ -25,8 +25,6 @@
 import AuthNav from '@/components/layouts/AuthNav'
 
 export default {
-  middleware: 'auth',
-  
   components: {
     AuthNav
   },

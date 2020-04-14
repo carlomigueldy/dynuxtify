@@ -101,12 +101,19 @@
 									<v-avatar size="90">
 										<v-img :src="avatar"></v-img>
 									</v-avatar>
-									<div class="mt-5 title font-weight-regular">
-										{{ user.name || 'Not Specified' }}
-									</div>
-									<div class="subtitle-2 font-weight-regular">
-										{{ user.email || 'Not Specified' }}
-									</div>
+                  <div v-if="$auth.loggedIn">
+                    <div class="mt-5 title font-weight-regular">
+                      {{ $auth.user.name || 'Not Specified' }}
+                    </div>
+                    <div class="subtitle-2 font-weight-regular">
+                      {{ $auth.user.email || 'Not Specified' }}
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div class="mt-5 title font-weight-regular">
+                      You are not authenticated.
+                    </div>
+                  </div>
 								</div>
 							</v-list-item-content>
 						</v-list-item>

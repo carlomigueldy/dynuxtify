@@ -36,7 +36,9 @@
 
 <script>
 export default {
-  layout: 'none',
+  auth: 'guest',
+  
+  layout: 'empty',
 }
 </script>
 

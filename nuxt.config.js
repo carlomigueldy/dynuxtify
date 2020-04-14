@@ -73,23 +73,34 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.BASE_URL,
+    baseURL: 'http://stg.vawg.net/',
   },
 
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' },
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'access_token' },
           logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/me', method: 'post', propertyName: 'data' }
+          user: { url: '/api/auth/me', method: 'post', propertyName: false }
         },
-        autoFetchUser: false,
+        tokenType: 'bearer',
+        autoFetchUser: true
+        // autoFetchUser: false,
         // tokenRequired: true,
-        // tokenType: 'bearer'
-        // autoFetchUser: true
       }
+    },
+    // redirect: false,
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/login',
+      home: '/dashboard',
     }
+  },
+
+  router: {
+    middleware: 'auth',
   },
   /*
   ** vuetify module configuration

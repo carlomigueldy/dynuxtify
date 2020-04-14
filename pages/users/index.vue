@@ -55,8 +55,8 @@
               <DataTable 
                 title="Users"
                 route="users"
-                :items="posts"
-                :headers="post_headers"
+                :items="users"
+                :headers="headers"
               />
             </v-tab-item>
             <v-tab-item>
