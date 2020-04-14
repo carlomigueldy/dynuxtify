@@ -1,24 +1,29 @@
 <template>
   <div>
-    <!-- <span class="bg"></span> -->
+    <span class="bg"></span>
     <v-app app>
-      <v-content class="primary" app>
+      <v-navigation-drawer
+        :width="
+          $vuetify.breakpoint.xl
+          ? '700' 
+          : $vuetify.breakpoint.lg || $vuetify.breakpoint.md 
+          ? '450' 
+          : '100%'"
+        :value="true"
+        :touchless="true"
+        permanent
+        :right="true"
+        app>
         <v-container fill-height>
           <v-row 
             justify="center" 
-            align="center"
-            class="mx-auto">
-            <v-col 
-              lg="12"
-              md="12"
-              sm="12"
-              cols="12"
-              >
+            align="stretch">
+            <v-col>
               <SignIn />
             </v-col>
           </v-row>
         </v-container>
-      </v-content>
+      </v-navigation-drawer>
     </v-app>
   </div>
 </template>
@@ -44,7 +49,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background: url("https://source.unsplash.com/random/1600x900") no-repeat center center;
+  background: url("https://images.pexels.com/photos/2524366/pexels-photo-2524366.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") no-repeat center center;
   background-size: cover;
   background-color: black;
 }
