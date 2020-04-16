@@ -3,7 +3,12 @@ import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
   invoices: [],
-  invoice: {}
+  invoice: {},
+  form: {
+    invoice_date: '',
+    due_date: '',
+    days_overdue: '',
+  }
 })
 
 export const getters = {
@@ -23,8 +28,10 @@ export const mutations = {
   ADD_INVOICE: (state, payload) =>
     state.invoices.push(payload),
 
-  REMOVE_INVOICE: (state, index) =>
-    state.invoices.slice(index, 1),
+  REMOVE_INVOICE: (state, payload) => {
+    const index = state.invoices.findIndex(d => d.id == payload)
+    state.invoices.splice(index, 1)
+  },
 
   updateField,
 }
@@ -73,19 +80,22 @@ export const actions = {
    * @param { Object } context 
    * @param { Object } payload 
    */
-  async add({ commit, dispatch }, payload) {
+  async add({ state, commit, dispatch }) {
     try {
       const {
         invoice_date,
         due_date,
         days_overdue
-      } = payload
+      } = state.form
       
       const invoice = createInvoice({
+        id: state.invoices.length + 1,
         invoice_date,
         due_date,
         days_overdue,
       })
+
+      console.log(invoice)
 
       commit('ADD_INVOICE', invoice)
       dispatch('alerts/execute', {
@@ -107,7 +117,7 @@ export const actions = {
    * @param { Object } context 
    * @param { Object } payload 
    */
-  async update({ commit, dispatch }, payload) {
+  async update({ state, commit, dispatch }, payload) {
     try {
       // 
     } catch (error) {
@@ -123,7 +133,7 @@ export const actions = {
    */
   async destroy({ commit, dispatch }, payload) {
     try {
-      // 
+      commit('REMOVE_INVOICE', payload)
     } catch (error) {
       console.log(error)
     }

@@ -14,9 +14,10 @@
         ></v-text-field>
         <v-toolbar-title></v-toolbar-title>
         <v-spacer></v-spacer>
+          <!-- @click="$router.push({ name: `${route}-create` })" -->
         <v-btn 
           color="primary"
-          @click="$router.push({ name: `${route}-create` })"
+          @click="createDialog = true"
           text>
           <v-icon small left>mdi-plus-circle-outline</v-icon>
           Add Invoice
@@ -119,14 +120,56 @@
           <v-btn icon>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
+          <v-btn @click="$store.dispatch('invoice/destroy', item.id)" icon>
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
         </template>
       </v-data-table>
     </v-card>
+
+    <v-dialog 
+      v-model="createDialog" 
+      scrollable 
+      max-width="500">
+      <v-form @submit.prevent="$store.dispatch('invoice/add')">
+        <v-card>
+          <v-toolbar color="transparent" flat>
+            <v-toolbar-title>NEW INVOICE</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn @click="createDialog = false" icon>
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <v-card-text>
+            <InvoiceForm />
+          </v-card-text>
+          <v-card-actions>
+            <v-btn 
+              block
+              tile
+              class="text-uppercase"
+              x-large
+              width="225"
+              color="primary"
+              type="submit" 
+              depressed>
+              Submit
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-form>
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import InvoiceForm from '@/components/invoice/InvoiceForm'
+
 export default {
+  components: {
+    InvoiceForm
+  },
+  
   props: {
     title: {
       type: String,
@@ -151,6 +194,7 @@ export default {
 
   data: () => ({
     refreshing: false,
+    createDialog: false,
     dateFilterMenu: false,
     fromDate: null,
     toDate: null,

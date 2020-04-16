@@ -18,7 +18,7 @@
       </v-menu>
     </v-toolbar>
     <v-tabs 
-      background-color="grey lighten-3" 
+      background-color="grey lighten-4" 
       show-arrows
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>
@@ -40,7 +40,7 @@
               <DataTable 
                 title="Invoices"
                 route="invoices"
-                :items="invoices"
+                :items="$store.state.invoice.invoices"
                 :headers="headers"
               />
             </v-tab-item>
@@ -48,7 +48,6 @@
               <DataTable 
                 title="Invoices"
                 route="invoices"
-                :items="invoices"
                 :headers="headers"
               />
             </v-tab-item>
@@ -70,6 +69,10 @@ export default {
   data: () => ({
     tabs: 0,
     headers: [
+      {
+        text: '#',
+        value: 'id'
+      },
       {
         text: 'Invoice Date',
         value: 'invoice_date',
