@@ -3,6 +3,7 @@
     <span class="bg"></span>
     <v-app app>
       <v-navigation-drawer
+        class="elevation-10"
         :width="
           $vuetify.breakpoint.xl
           ? '700' 
