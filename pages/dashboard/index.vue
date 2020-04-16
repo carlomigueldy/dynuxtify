@@ -66,7 +66,7 @@
             <v-card height="100%">
               <v-card-title>Calendar</v-card-title>
               <v-card-text>
-                <!-- <Calendar /> -->
+                <Calendar />
               </v-card-text>
             </v-card>
           </v-col>

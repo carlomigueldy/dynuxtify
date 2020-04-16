@@ -105,6 +105,7 @@
 <script>
   export default {
     data: () => ({
+      today: '',
       focus: '',
       type: 'month',
       typeToLabel: {
