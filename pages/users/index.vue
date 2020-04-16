@@ -1,12 +1,7 @@
 <template>
   <div>
-    <v-toolbar color="transparent" dark flat>
-      <v-toolbar-title>
-        <h2 
-          class="font-weight-medium">
-          Users
-        </h2>
-      </v-toolbar-title>
+    <v-toolbar color="transparent" flat>
+      <v-toolbar-title class="display-1">Users</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
@@ -23,8 +18,7 @@
       </v-menu>
     </v-toolbar>
     <v-tabs 
-      dark
-      background-color="primary" 
+      background-color="grey lighten-3" 
       show-arrows
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>
