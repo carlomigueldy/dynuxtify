@@ -73,8 +73,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-	  baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
-	  // baseURL: 'http://stg.vawg.net/',
+	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
+	  baseURL: 'http://stg.vawg.net/',
   },
 
   auth: {

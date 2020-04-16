@@ -5,7 +5,7 @@
       :toolbarDark="isDark"
     />
 
-    <v-content class="grey lighten-3" app>
+    <v-content class="grey lighten-4" app>
       <div :class="`app-background ${pageTheme}`"></div>
       <v-container>
         <nuxt />
@@ -65,7 +65,7 @@ export default {
       } 
       
       this.isDark = false
-      theme = 'grey lighten-3'
+      theme = 'grey lighten-4'
 
       return theme
     },

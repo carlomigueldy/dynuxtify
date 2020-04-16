@@ -18,7 +18,7 @@
       </v-menu>
     </v-toolbar>
     <v-tabs 
-      background-color="grey lighten-3" 
+      background-color="grey lighten-4" 
       show-arrows
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>

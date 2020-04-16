@@ -238,7 +238,12 @@ export default {
         route: 'users'
       },
       {
-        icon: 'mdi-account-multiple',
+        icon: 'mdi-file-table',
+        title: 'Invoices',
+        route: 'invoices',
+      },
+      {
+        icon: 'mdi-language-javascript',
         title: 'Playground',
         route: 'tinker'
       },
