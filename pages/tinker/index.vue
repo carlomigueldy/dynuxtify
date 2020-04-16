@@ -34,10 +34,6 @@
               :fields="fields"
             />
           </v-card-text>
-          <v-card-text>
-            <component :is="'VAutocomplete'" />
-
-          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -53,29 +49,14 @@ export default {
   },
 
   data: () => ({
+    count: 0,
     fields: [
       {
         component: 'v-text-field',
-        label: 'Field A',
-        outlined: true,
-        solo: false,
-        dense: false,
-        data: null,
-      },
-      {
-        component: 'v-text-field',
-        label: 'Field B',
-        outlined: false,
-        solo: true,
-        dense: false,
-        data: null,
-      },
-      {
-        component: 'v-autocomplete',
-        label: 'Field C',
+        label: 'First Name',
         outlined: false,
         solo: false,
-        dense: true,
+        dense: false,
         data: null,
       },
     ]

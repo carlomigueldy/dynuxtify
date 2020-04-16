@@ -1,14 +1,13 @@
 <template>
   <div>
-    <code>{{ fields }}</code>
     <Component 
       :key="i"
       v-for="(f, i) in fields"
-      :is="f.component"
-      :label="f.label"
-      :dense="f.dense"
-      :outlined="f.outlined"
-      :solo="f.solo"
+      :is="f.component || 'v-text-field'"
+      :label="f.label || 'Label Not Specified'"
+      :dense="f.dense || false"
+      :outlined="f.outlined || false"
+      :solo="f.solo || false"
       v-model="f[data]"
     ></Component>
   </div>
@@ -32,27 +31,6 @@ export default {
         }
       ],
     },
-
-    store: {
-      type: String,
-      default: () => 'index',
-    },
-
-    bindings: {
-      type: Array,
-      default: () => [
-        'user.first_name',
-        'user.last_name',
-        'user.email',
-      ],
-    }
-  },
-
-  computed: {
-    ...mapFields(
-      this.store, 
-      this.bindings
-    )
   },
 }
 </script>
