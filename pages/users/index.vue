@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import DataTable from '@/components/users/DataTable'
+import DataTable from '@/components/user/DataTable'
 import axios from 'axios'
 
 export default {
