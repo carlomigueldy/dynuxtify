@@ -15,4 +15,4 @@ export const dateFormat = (date) => {
 export const mapUTCDate = (date) => {
   const d = new Date(date)
   return `${d.getUTCFullYear()} ${d.getUTCMonth() + 1} ${d.getUTCDate()}`
-},
+}
