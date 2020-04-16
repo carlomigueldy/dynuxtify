@@ -21,15 +21,19 @@
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer> -->
+
+    <Snackbar />
   </v-app>
 </template>
 
 <script>
 import AuthNav from '@/components/layouts/AuthNav'
+import Snackbar from '@/components/alerts/Snackbar'
 
 export default {
   components: {
-    AuthNav
+    AuthNav,
+    Snackbar
   },
 
   computed: {

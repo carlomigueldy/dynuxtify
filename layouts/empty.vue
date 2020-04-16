@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <v-app>
     <nuxt />
-  </div>
+
+    <Snackbar />
+  </v-app>
 </template>
 
 <script>
-export default {
+import Snackbar from '@/components/alerts/Snackbar'
 
+export default {
+  components: {
+    Snackbar,
+  }
 }
 </script>
 

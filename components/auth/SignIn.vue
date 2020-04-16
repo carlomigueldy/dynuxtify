@@ -87,17 +87,15 @@ export default {
     async login() {
       this.loggingIn = true
       try {
-        // this.$axios.setBaseURL(process.env.BASE_URL)
-
-        const { data } = await this.$auth.loginWith('local', {
+        await this.$auth.loginWith('local', {
           data: this.credentials
         })
 
-        // this.$axios.setToken(data.access_token, 'Bearer')
-        // const res = await this.$axios.post('/api/auth/me')
-
-        // this.$auth.setUser(res.data)
-        // this.$auth.setToken('local', data.access_token)
+        this.$store.dispatch('alerts/execute', {
+          type: 'success',
+          message: 'You have logged in.',
+        })
+        
         this.loggingIn = false
         
         await this.$router.push({ name: 'dashboard' })
