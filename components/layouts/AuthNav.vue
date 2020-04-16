@@ -229,7 +229,12 @@ export default {
         icon: 'mdi-account-multiple',
         title: 'Users',
         route: 'users'
-      }
+      },
+      {
+        icon: 'mdi-account-multiple',
+        title: 'Playground',
+        route: 'tinker'
+      },
     ],
     subpages: [
       {
