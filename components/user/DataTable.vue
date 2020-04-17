@@ -16,7 +16,7 @@
         <v-spacer></v-spacer>
         <v-btn 
           color="primary"
-          @click="$router.push({ name: `${route}-create` })"
+          @click="createDialog = !createDialog"
           text>
           <v-icon small left>mdi-plus-circle-outline</v-icon>
           Add User
@@ -122,11 +122,66 @@
         </template>
       </v-data-table>
     </v-card>
+
+    <v-navigation-drawer 
+      :width="
+        $vuetify.breakpoint.xl
+        ? '700' 
+        : $vuetify.breakpoint.lg || $vuetify.breakpoint.md 
+        ? '450' 
+        : '100%'"
+      :right="true"
+      :value="createDialog" 
+      :temporary="true"
+      :touchless="true"
+      app>
+      <v-form @submit.prevent="$store.dispatch('user/add')
+        .then(() => createDialog = !createDialog)">
+        <v-card flat>
+          <v-toolbar color="transparent" flat>
+            <v-toolbar-title>Create a User</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn @click="createDialog = !createDialog" icon>
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <v-card-text>
+            <UserForm />
+            <v-btn 
+              class="text-uppercase mb-3"
+              @click="createDialog = !createDialog"
+              color="primary"
+              tile
+              block
+              large
+              text>
+              Cancel
+            </v-btn>
+            <v-btn 
+              tile
+              block
+              large
+              class="text-uppercase"
+              color="primary"
+              type="submit" 
+              depressed>
+              Submit
+            </v-btn>
+          </v-card-text>
+        </v-card>
+      </v-form>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
+import UserForm from '@/components/user/UserForm'
+
 export default {
+  components: {
+    UserForm
+  },
+  
   props: {
     title: {
       type: String,
@@ -150,6 +205,7 @@ export default {
   },
 
   data: () => ({
+    createDialog: false,
     refreshing: false,
     dateFilterMenu: false,
     fromDate: null,
