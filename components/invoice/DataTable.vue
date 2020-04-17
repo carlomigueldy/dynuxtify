@@ -17,7 +17,7 @@
           <!-- @click="$router.push({ name: `${route}-create` })" -->
         <v-btn 
           color="primary"
-          @click="createDialog = true"
+          @click="createDialog = !createDialog"
           text>
           <v-icon small left>mdi-plus-circle-outline</v-icon>
           Add Invoice
@@ -127,38 +127,53 @@
       </v-data-table>
     </v-card>
 
-    <v-dialog 
-      v-model="createDialog" 
-      scrollable 
-      max-width="500">
+    <v-navigation-drawer 
+      :width="
+        $vuetify.breakpoint.xl
+        ? '700' 
+        : $vuetify.breakpoint.lg || $vuetify.breakpoint.md 
+        ? '450' 
+        : '100%'"
+      :right="true"
+      :value="createDialog" 
+      :temporary="true"
+      :touchless="true"
+      app>
       <v-form @submit.prevent="$store.dispatch('invoice/add')">
-        <v-card>
+        <v-card flat>
           <v-toolbar color="transparent" flat>
-            <v-toolbar-title>NEW INVOICE</v-toolbar-title>
+            <v-toolbar-title>Create an Invoice</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn @click="createDialog = false" icon>
+            <v-btn @click="createDialog = !createDialog" icon>
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
           <v-card-text>
             <InvoiceForm />
-          </v-card-text>
-          <v-card-actions>
             <v-btn 
-              block
+              class="text-uppercase mb-3"
+              @click="createDialog = !createDialog"
+              color="primary"
               tile
+              block
+              large
+              text>
+              Cancel
+            </v-btn>
+            <v-btn 
+              tile
+              block
+              large
               class="text-uppercase"
-              x-large
-              width="225"
               color="primary"
               type="submit" 
               depressed>
               Submit
             </v-btn>
-          </v-card-actions>
+          </v-card-text>
         </v-card>
       </v-form>
-    </v-dialog>
+    </v-navigation-drawer>
   </div>
 </template>
 
