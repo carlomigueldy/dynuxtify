@@ -119,6 +119,9 @@
           <v-btn icon>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
+          <v-btn @click="$store.dispatch('user/destroy', item.id)" icon>
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
         </template>
       </v-data-table>
     </v-card>

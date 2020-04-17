@@ -79,6 +79,7 @@ export const actions = {
     try {
       const {
         name,
+        role,
         email,
         phone_number,
         password,
@@ -87,6 +88,7 @@ export const actions = {
       const user = createUser({
         id: state.users.length + 1,
         name,
+        role,
         email,
         phone_number,
         password,
@@ -132,6 +134,10 @@ export const actions = {
   async destroy({ commit, dispatch }, payload) {
     try {
       commit('REMOVE_USER', payload)
+      dispatch('alerts/execute', {
+        type: 'success',
+        message: 'A user has been removed.',
+      }, { root: true })
     } catch (error) {
       console.log(error)
     }

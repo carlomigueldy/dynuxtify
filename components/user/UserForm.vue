@@ -5,11 +5,15 @@
       v-model="name"
       outlined
     ></v-text-field>
-    <v-text-field
+    <v-autocomplete
       label="Role"
       v-model="role"
+      :items="[
+        'Administrator',
+        'User',
+      ]"
       outlined
-    ></v-text-field>
+    ></v-autocomplete>
     <v-text-field
       label="Email"
       v-model="email"

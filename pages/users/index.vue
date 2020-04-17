@@ -81,6 +81,10 @@ export default {
     tabs: 0,
     headers: [
       {
+        text: '#',
+        value: 'id'
+      },
+      {
         text: 'Name',
         value: 'name',
       },
@@ -89,12 +93,8 @@ export default {
         value: 'email',
       },
       {
-        text: 'Username',
-        value: 'username',
-      },
-      {
-        text: 'Phone',
-        value: 'phone',
+        text: 'Role',
+        value: 'role',
       },
       {
         text: 'Actions',
