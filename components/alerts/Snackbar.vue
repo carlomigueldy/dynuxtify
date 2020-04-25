@@ -9,17 +9,21 @@
       v-model="show">
       <v-icon
         size="32"
-        v-if="type == 'success' || type == 'error'"
         :color="type == 'success' 
           ? 'success' 
           : type == 'error'
           ? 'error'
+          : type == 'info' 
+          ? 'blue' 
           : '' "
         v-text="type == 'success' 
           ? 'mdi-check-circle' 
           : type == 'error'
-          ? 'mdi-alert'
+          ? 'mdi-alert-circle'
+          : type == 'info' 
+          ? 'mdi-alert-circle-outline' 
           : '' "
+        left
       ></v-icon>
       {{ message }}
       <v-btn 
@@ -37,7 +41,6 @@
 
 <script>
 import { mapFields } from 'vuex-map-fields'
-
 export default {
   computed: {
     ...mapFields('alerts', [

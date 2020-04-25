@@ -48,6 +48,7 @@ export default {
   plugins: [
     '@/plugins/main',
     '@/plugins/mdi',
+    '@/plugins/notifier',
     '@/plugins/vue-apex-charts',
     '@/plugins/vue-number-animation',
   ],
@@ -73,8 +74,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
-	  baseURL: 'http://stg.vawg.net/',
+	  baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
+	  // baseURL: 'http://stg.vawg.net/',
   },
 
   auth: {
