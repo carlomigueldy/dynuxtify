@@ -13,15 +13,6 @@
       </v-container>
     </v-content>
 
-    <!-- <v-footer
-      :fixed="true"
-      max-height="30"
-      inset
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer> -->
-
     <Snackbar />
   </v-app>
 </template>
@@ -64,8 +55,8 @@ export default {
         return theme
       } 
       
-      this.isDark = false
-      theme = 'grey lighten-4'
+      this.isDark = true
+      theme = 'primary'
 
       return theme
     },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="transparent" flat>
+    <v-toolbar color="transparent" dark flat>
       <v-toolbar-title class="display-1">Users</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu offset-y>
@@ -18,7 +18,8 @@
       </v-menu>
     </v-toolbar>
     <v-tabs 
-      background-color="grey lighten-4" 
+      background-color="primary" 
+      dark
       show-arrows
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>

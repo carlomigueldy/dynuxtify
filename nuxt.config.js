@@ -74,8 +74,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-	  baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
-	  // baseURL: 'http://stg.vawg.net/',
+	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
+	  baseURL: 'http://api-v2.childcare.io/',
   },
 
   auth: {
@@ -83,10 +83,10 @@ export default {
       local: {
         endpoints: {
           login: { url: '/api/auth/login', method: 'post', propertyName: 'access_token' },
-          logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/me', method: 'post', propertyName: false }
+          logout: { url: '/api/auth/logout', method: 'get' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: false }
         },
-        tokenType: 'bearer',
+        tokenType: 'Bearer',
         autoFetchUser: true
         // autoFetchUser: false,
         // tokenRequired: true,
@@ -94,9 +94,9 @@ export default {
     },
     // redirect: false,
     redirect: {
-      login: '/login',
-      logout: '/login',
-      callback: '/login',
+      login: '/',
+      logout: '/',
+      callback: '/',
       home: '/dashboard',
     }
   },

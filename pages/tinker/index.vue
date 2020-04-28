@@ -17,12 +17,18 @@
               End Loading
             </v-btn>
 
-            <v-btn @click="fetchData()">
+            <v-btn>
               Fetch
             </v-btn>
 
             <v-btn>
               Fetch Uesr
+            </v-btn>
+
+            <v-btn 
+              color="teal darken-2" 
+              dark>
+              BUY PIZZA
             </v-btn>
 
             <div>

@@ -1,64 +1,57 @@
 <template>
-  <v-app app>
-    <v-app-bar 
-      :elevate-on-scroll="true"
-      color="primary"
-      dense 
-      app>
-      <v-spacer></v-spacer>
-      <v-btn 
-        @click="$router.push({ name: 'login' })"
-        depressed>
-        Log In
-      </v-btn>
-    </v-app-bar>
-
-    <v-content app>
-      <div class="app-background primary"></div>
-      <v-container fill-height>
-        <v-row justify="center" align="center">
-          <v-col>
-            <v-card color="transparent" flat>
-              <v-card-text>
-                <div class="display-4">
-                  <div class="text-center white--text">
-                    Welcome to Dynuxtify js
-                  </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-content>
-  </v-app>
+  <div>
+    <span class="bg"></span>
+    <v-app app>
+      <v-navigation-drawer
+        class="elevation-10"
+        :width="
+          $vuetify.breakpoint.xl
+          ? '700' 
+          : $vuetify.breakpoint.lg || $vuetify.breakpoint.md 
+          ? '450' 
+          : '100%'"
+        :value="true"
+        :touchless="true"
+        permanent
+        :right="true"
+        app>
+        <v-container fill-height>
+          <v-row 
+            justify="center" 
+            align="stretch">
+            <v-col>
+              <SignIn />
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-navigation-drawer>
+    </v-app>
+  </div>
 </template>
 
 <script>
+import SignIn from '@/components/auth/SignIn'
+
 export default {
   auth: 'guest',
   
   layout: 'empty',
+  
+  components: {
+    SignIn,
+  },
 }
 </script>
 
 <style scoped>
-html {
-  scroll-behavior: smooth;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-.app-background {
+.bg {
   width: 100%;
-  height: 30rem;
+  height: 100%;
   position: absolute;
-  /* background-color: #1976d2; */
+  top: 0;
+  left: 0;
+  background: url("https://images.pexels.com/photos/2524366/pexels-photo-2524366.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") no-repeat center center;
+  background-size: cover;
+  background-color: black;
 }
 </style>

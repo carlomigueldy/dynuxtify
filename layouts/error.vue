@@ -1,6 +1,5 @@
 <template>
   <v-app app>
-
     <v-content class="primary" app>
       <v-container fill-height>
         <v-row justify="center" align="center">
@@ -29,7 +28,7 @@
 
 <script>
 export default {
-  layout: 'none',
+  layout: 'empty',
 
   props: {
     error: {
