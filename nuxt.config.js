@@ -46,9 +46,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '@/plugins/helpers',
     '@/plugins/main',
     '@/plugins/mdi',
-    '@/plugins/notifier',
     '@/plugins/vue-apex-charts',
     '@/plugins/vue-number-animation',
   ],
@@ -62,11 +62,9 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/auth',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
   ],
   /*
@@ -75,7 +73,7 @@ export default {
   */
   axios: {
 	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
-	  baseURL: 'http://api-v2.childcare.io/',
+	  baseURL: 'http://api-v2.childcare.io/', 
   },
 
   auth: {
@@ -88,11 +86,9 @@ export default {
         },
         tokenType: 'Bearer',
         autoFetchUser: true
-        // autoFetchUser: false,
-        // tokenRequired: true,
       }
     },
-    // redirect: false,
+
     redirect: {
       login: '/',
       logout: '/',
@@ -139,8 +135,4 @@ export default {
     extend (config, ctx) {
     }
   },
-
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-  }
 }

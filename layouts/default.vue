@@ -6,10 +6,9 @@
     />
 
     <v-content class="grey lighten-4" app>
-      <div :class="`app-background ${pageTheme}`"></div>
+      <div :class="`skewed ${pageTheme}`"></div>
       <v-container>
         <nuxt />
-        <div class="mb-10 pb-10"></div>
       </v-container>
     </v-content>
 
@@ -82,5 +81,20 @@ html {
   height: 25rem;
   /* background-color: #1976d2; */
   position: absolute;
+}
+
+
+.skewed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 40rem;
+  /* background: #2c3e50; */
+  z-index: 0;
+  transform: skewY(10deg);
+  transform-origin: top right;
 }
 </style>
