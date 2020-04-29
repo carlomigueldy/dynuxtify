@@ -154,14 +154,12 @@
               class="text-uppercase mb-3"
               @click="createDialog = !createDialog"
               color="primary"
-              tile
               block
               large
               text>
               Cancel
             </v-btn>
             <v-btn 
-              tile
               block
               large
               class="text-uppercase"
