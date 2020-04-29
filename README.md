@@ -37,6 +37,24 @@ this.$notifier.execute({
 - /tinker for the web-tinker
 - /telescope for the activity logging including Job Queues, etc
 
+## API: Polymorphic Relationships
+
+Inserting into a polymorphic relationship
+Reference: https://laracasts.com/discuss/channels/eloquent/inserting-polymorphic-relations
+
+```
+$address = new Address([
+  'address_line_1' => 'Maigo, Lanao del Norte',
+  'street_address' => 'Purok 2',
+  'postal_code' => '9206',
+  'country' => 'PH',
+]);
+  
+$user = User::first();
+
+$query = $user->addresses()->save($address);
+```
+
 ## Build Setup
 
 ```bash
