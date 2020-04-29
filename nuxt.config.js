@@ -27,10 +27,10 @@ export default {
     continuous: true,
   },
 
-  // transition: {
-  //   name: 'fade',
-  //   mode: 'out-in'
-  // },
+  transition: {
+    name: 'fade',
+    mode: 'out-in'
+  },
 
   // layoutTransition: {
   //   name: 'fade',
