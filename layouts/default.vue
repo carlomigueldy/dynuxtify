@@ -40,6 +40,12 @@ export default {
     },
   },
 
+  transition: {
+    afterLeave(el) {
+      console.log('afterLeave', el)
+    }
+  },
+
   data: () => ({
     isDark: false,
   }),
@@ -68,8 +74,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* NAME: Fade */
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 
 .fade-enter, .fade-leave-to {
@@ -82,7 +89,6 @@ html {
   /* background-color: #1976d2; */
   position: absolute;
 }
-
 
 .skewed {
   position: absolute;

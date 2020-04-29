@@ -12,7 +12,7 @@
           <v-col>
             <Count 
               title="Users"
-              border-color="purple" 
+              border-color="cyan" 
               :value="103"
             />
           </v-col>
@@ -20,12 +20,16 @@
             <Count 
               title="Leads"
               border-color="red" 
+              format="money"
+              :value="45155"
             />
           </v-col>
           <v-col>
             <Count 
               title="Sales"
               border-color="orange" 
+              format="money"
+              :value="80445"
             />
           </v-col>
         </v-row>
@@ -34,7 +38,7 @@
           <v-col lg="6" md="6" sm="12" cols="12">
             <v-card height="100%">
               <v-card-text>
-                <BarChart />
+                <line-chart height="250px" />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Sales</v-card-title>
@@ -46,36 +50,7 @@
           <v-col lg="6" md="6" sm="12" cols="12">
             <v-card height="100%">
               <v-card-text>
-                <LineChart />
-              </v-card-text>
-              <v-divider></v-divider>
-              <v-card-title>Overview</v-card-title>
-              <v-card-text>
-                Some cool information
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-
-        <v-divider class="mb-10"></v-divider>
-
-        <v-row class="mb-10">
-          <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card height="100%">
-              <v-card-text>
-                <ScatterChart />
-              </v-card-text>
-              <v-divider></v-divider>
-              <v-card-title>Sales</v-card-title>
-              <v-card-text>
-                Some cool information
-              </v-card-text>
-            </v-card>
-          </v-col>
-          <v-col lg="6" md="6" sm="12" cols="12">
-            <v-card height="100%">
-              <v-card-text>
-                <AreaChart />
+                <line-chart height="250px" />
               </v-card-text>
               <v-divider></v-divider>
               <v-card-title>Overview</v-card-title>
@@ -93,17 +68,15 @@
 
 <script>
 import Count from '@/components/reporting/Count'
-import BarChart from '@/components/charts/BarChart'
-import LineChart from '@/components/charts/LineChart'
-import ScatterChart from '@/components/charts/ScatterChart'
-import AreaChart from '@/components/charts/AreaChart'
+import LineChart from '@/components/charts/chartjs/LineChart.js'
+import BarChart from '@/components/charts/apex-charts/BarChart'
+import AreaChart from '@/components/charts/apex-charts/LineChart'
 
 export default {
   components: {
     Count,
-    BarChart,
     LineChart,
-    ScatterChart,
+    BarChart,
     AreaChart,
   },
   
