@@ -22,8 +22,9 @@ class AdminRolesTableSeeder extends Seeder
             'create users',
             'read users',
             'update users',
-            'delete users',
+            'archive users',
             'restore users',
+            'delete users',
             'impersonate users'
         ];
 
