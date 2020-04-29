@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth routes
 Route::group([
     'prefix' => 'auth'
 ], function () {
@@ -28,7 +29,24 @@ Route::group([
     });
 });
 
-Route::get('testing', function() {
-    return response()->json('Hello world');
-});
+// System routes
+Route::group([
+    'middleware' => 'auth:api',
+], function () {
+    // API Resources
+    Route::apiResources([
+        'users' => 'Modules\Users\UserController',
+    ]);
 
+    // Archived users
+    Route::get('users-archived/restore/{id}', 'Modules\Users\UserController@restore');
+    Route::apiResource('users-archived', 'Modules\Users\ArchivedUserController')->only([
+        'index',
+        'show',
+        'destroy'
+    ]);
+    
+    // Active users
+    Route::get('users-active', 'Modules\Users\ActiveUserController@index');
+    Route::get('users-active/past-hours/{hours}', 'Modules\Users\ActiveUserController@activePastHour');
+});
