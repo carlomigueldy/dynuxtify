@@ -5,6 +5,7 @@
  */
 
 import { Line } from 'vue-chartjs'
+import colors from 'vuetify/es5/util/colors'
 
 export default {
   extends: Line,
