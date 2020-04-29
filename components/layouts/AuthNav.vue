@@ -243,6 +243,11 @@ export default {
         route: 'invoices',
       },
       {
+        icon: 'mdi-calendar',
+        title: 'Calendar',
+        route: 'calendar',
+      },
+      {
         icon: 'mdi-language-javascript',
         title: 'Playground',
         route: 'tinker'
