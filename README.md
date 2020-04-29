@@ -32,6 +32,8 @@ this.$notifier.execute({
 - https://github.com/spatie/regex (to be added) 
 - https://github.com/joshrainwater/active-users 
 - https://github.com/Askedio/laravel-soft-cascade 
+- https://github.com/mpociot/laravel-apidoc-generator (API doc generator)
+- https://laravel-apidoc-generator.readthedocs.io/en/latest/documenting.html
 
 ## API: Dev Tools
 - /tinker for the web-tinker
