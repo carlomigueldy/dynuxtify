@@ -19,7 +19,13 @@ class UserController extends Controller
             abort(403, 'You have no privileges for the requested resource.');
         }
         
-        return response()->json(User::get());
+        $users = User::get()->map(function ($data) {
+            $data['role'] = $data->getFirstRole();
+
+            return $data;
+        });
+        
+        return response()->json($users);
     }
 
     /**
