@@ -1,20 +1,20 @@
-import { getField, updateField } from 'vuex-map-fields';
-
 export const state = () => ({
   // 
 })
 
 export const getters = {
-  IS_AUTHENTICATED: state => state.auth.loggedIn,
-  GET_AUTH_USER: state => state.auth.user,
-  GET_AUTH: state => state.auth,
-  getField,
+  isSuperAdmin: state => hasRole('super administrator', state.auth.user.roles),
+  isAdmin: state => hasRole('administrator', state.auth.user.roles),
 }
 
 export const mutations = {
-  updateField,
+  // 
 }
 
 export const actions = {
-
+  // 
 }
+
+// Private Method
+// Checks if user contains role specified
+const hasRole = (roles, role) => roles.includes(role) 
