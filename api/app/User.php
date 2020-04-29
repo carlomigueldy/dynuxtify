@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
@@ -11,12 +13,35 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, HasApiTokens, Impersonate;
+    use Notifiable, 
+        HasRoles, 
+        HasApiTokens, 
+        Impersonate, 
+        SoftDeletes,
+        SoftCascadeTrait;
 
+    /**
+     * The relationships always with the query.
+     * 
+     * @var Array
+     */
+    protected $with = [
+        'roles'
+    ];
+
+    /**
+     * The related attributes that gets softly deleted.
+     * 
+     * @var Array
+     */
+    protected $softCascade = [
+
+    ];
+    
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var Array
      */
     protected $fillable = [
         'name', 'email', 'password',
@@ -25,7 +50,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var Array
      */
     protected $hidden = [
         'password', 'remember_token',
@@ -34,7 +59,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var Array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
