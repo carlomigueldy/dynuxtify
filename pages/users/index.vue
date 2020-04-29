@@ -76,6 +76,12 @@ import DataTable from '@/components/user/DataTable'
 import axios from 'axios'
 
 export default {
+  head () {
+    return {
+      title: 'Nuxt Admin | Users',
+    }
+  },
+  
   components: {
     DataTable,
   },

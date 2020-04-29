@@ -42,6 +42,12 @@
 import Calendar from '@/components/calendar/Calendar'
 
 export default {
+  head () {
+    return {
+      title: 'Nuxt Admin | Calendar',
+    }
+  },
+  
   components: {
     Calendar,
   }

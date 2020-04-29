@@ -84,6 +84,12 @@ import CardChart from '@/components/charts/CardChart'
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  head () {
+    return {
+      title: 'Nuxt Admin | Dashboard',
+    }
+  },
+  
   components: {
     Count,
     LineChart,

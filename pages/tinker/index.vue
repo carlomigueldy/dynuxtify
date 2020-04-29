@@ -70,6 +70,12 @@
 import FormBuilder from '@/components/builder/FormBuilder'
 
 export default {
+  head () {
+    return {
+      title: 'Nuxt Admin | Playground',
+    }
+  },
+  
   components: {
     FormBuilder
   },

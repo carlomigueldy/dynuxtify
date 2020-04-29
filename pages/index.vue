@@ -34,6 +34,12 @@ import SignIn from '@/components/auth/SignIn'
 
 export default {
   auth: 'guest',
+
+  head () {
+    return {
+      title: 'Nuxt Admin | Login',
+    }
+  },
   
   layout: 'empty',
   

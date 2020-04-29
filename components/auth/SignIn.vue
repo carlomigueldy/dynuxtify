@@ -16,7 +16,7 @@
           Welcome to
         </div>
         <div class="display-2">
-          Dynuxtify
+          Nuxt Admin
         </div>
       </div>
       
