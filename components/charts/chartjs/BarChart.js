@@ -1,40 +1,29 @@
 /**
  * Usage:
  * 
- * <line-chart :chartdata="chartData" :options="chartOptions"/>
+ * <bar-chart :chartdata="chartData" :options="chartOptions"/>
  */
 
-import { Line } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
+import colors from 'vuetify/es5/util/colors'
 
 export default {
-  extends: Line,
+  extends: Bar,
   props: {
     chartdata: {
       type: Object,
       default: () => ({
         labels: [
-          'Week 1',
-          'Week 2',
-          'Week 3',
-          'Week 4',
-          'Week 5',
-          'Week 6',
-          'Week 7',
-          'Week 8',
-          'Week 9',
-          'Week 10',
+          'Month 1',
+          'Month 2',
+          'Month 3',
+          'Month 4',
         ],
         datasets: [
           {
             label: 'Sales',
-            backgroundColor: '#f87979',
+            backgroundColor: colors.deepOrange.darken2,
             data: [
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
               generateNumber(),
               generateNumber(),
               generateNumber(),
@@ -43,14 +32,8 @@ export default {
           },
           {
             label: 'Leads',
-            backgroundColor: 'blue',
+            backgroundColor: colors.blue.lighten3,
             data: [
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
-              generateNumber(),
               generateNumber(),
               generateNumber(),
               generateNumber(),
