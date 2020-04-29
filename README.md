@@ -31,6 +31,7 @@ this.$notifier.execute({
 - https://github.com/spatie/period (to be added; DATE PERIOD comparison)
 - https://github.com/spatie/regex (to be added) 
 - https://github.com/joshrainwater/active-users 
+- https://github.com/Askedio/laravel-soft-cascade 
 
 ## API: Dev Tools
 - /tinker for the web-tinker
