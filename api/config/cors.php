@@ -20,10 +20,8 @@ return [
         'allow_credentials' => false,
 
         'allow_origins' => [
-	    'https://dev.carlomigueldy.io/',
-	    'http://stg.carlomigueldy.io/',
-	    'http://localhost:3000',
-	],
+            '*',
+        ],
 
         'allow_methods' => [
             'POST',
@@ -38,8 +36,7 @@ return [
             'Content-Type',
             'X-Auth-Token',
             'Origin',
-	    'Authorization',
-	    'Access-Control-Allow-Origin',
+            'Authorization',
         ],
 
         'expose_headers' => [
