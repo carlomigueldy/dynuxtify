@@ -14,13 +14,29 @@
         ></v-text-field>
         <v-toolbar-title></v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn 
-          color="primary"
-          @click="createDialog = !createDialog"
-          text>
-          <v-icon small left>mdi-plus-circle-outline</v-icon>
-          Add User
-        </v-btn>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn 
+              color="primary"
+              text
+              v-on="on">
+              <v-icon small left>mdi-plus-circle-outline</v-icon>
+              Add User
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item @click="createDialog = !createDialog">
+              <v-list-item-title>
+                Quick create
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item @click="$router.push({ name: 'users-create' })">
+              <v-list-item-title>
+                Go to create form
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
 
         <v-menu 
           v-model="dateFilterMenu"

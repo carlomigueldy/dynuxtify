@@ -39,9 +39,10 @@ export const actions = {
    */
   async fetchAll({ commit }) {
     try {
-      const { data } = await this.$axios.$get('/api/users')
+      const data = await this.$axios.$get('/api/users')
 
       console.assert(data.length > 0, "No users found")
+      commit('SET_USERS', data)
     } catch (error) {
       console.log(error)
     }
