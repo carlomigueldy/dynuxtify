@@ -105,4 +105,44 @@ class AuthController extends Controller
             'roles' => auth()->user()->getRoleNames(),
         ]);
     }
+
+    /**
+     * Impersonates a user.
+     * 
+     * @return [string] message
+     */
+    public function impersonate($id)
+    {
+        $auth = auth()->user();
+
+        if (!$auth->canImpersonate()) {
+            abort(403, 'You do not have the privileges to impersonate this user.');
+        }
+        
+        $targetUser = User::find($id);
+
+        if ($targetUser == null) {
+            abort(403, 'Cannot impersonate a user that does not exist.');
+        } 
+        
+        else if (!$targetUser->canBeImpersonated()) {
+            abort(403, 'Cannot impersonate a super admin.');
+        }
+
+        return response()->json([
+            'message' => $auth->impersonate($targetUser),
+        ]);
+    }
+
+    /**
+     * Stops impersonating the user.
+     * 
+     * @return [string] message
+     */
+    public function stopImpersonation()
+    {
+        return response()->json([
+            'message' => auth()->user()->leaveImpersonation()
+        ]);
+    }
 }

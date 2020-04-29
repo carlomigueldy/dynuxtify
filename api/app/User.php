@@ -39,4 +39,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Checks if user can impersonate.
+     * 
+     * @return Boolean
+     */
+    public function canImpersonate()
+    {
+        return $this->hasRole('super administrator');
+    }
+
+    /**
+     * Super admin cannot be impersonated.
+     * 
+     * @return Boolean
+     */
+    public function canBeImpersonated()
+    {
+        return !$this->hasRole('super administrator');
+    }
 }
