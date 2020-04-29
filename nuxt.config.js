@@ -45,11 +45,12 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/helpers',
-    '@/plugins/main',
-    '@/plugins/mdi',
-    '@/plugins/vue-apex-charts',
-    '@/plugins/vue-number-animation',
+    { src: '@/plugins/mdi' },
+    { src: '@/plugins/main' },
+    { src: '@/plugins/helpers' },
+    { src: '@/plugins/vue-leaflet' },
+    { src: '@/plugins/vue-apex-charts' },
+    { src: '@/plugins/vue-number-animation' },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -74,7 +75,10 @@ export default {
 	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
 	  baseURL: 'http://api-v2.childcare.io/', 
   },
-
+  /*
+  ** Auth module configuration
+  ** See https://auth.nuxtjs.org/
+  */
   auth: {
     strategies: {
       local: {

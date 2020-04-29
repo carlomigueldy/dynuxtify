@@ -69,6 +69,14 @@
           </v-col>
         </v-row>
 
+        <v-divider class="mb-10"></v-divider>
+
+        <v-row class="mb-10">
+          <v-col>
+            <Map />
+          </v-col>
+        </v-row>
+
       </v-col>
     </v-row>
   </div>
@@ -81,6 +89,7 @@ import BarChart from '@/components/charts/chartjs/BarChart.js'
 import PieChart from '@/components/charts/chartjs/PieChart.js'
 import DoughnutChart from '@/components/charts/chartjs/DoughnutChart.js'
 import CardChart from '@/components/charts/CardChart'
+import Map from '@/components/leaflet/Map'
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -96,7 +105,8 @@ export default {
     BarChart,
     PieChart,
     DoughnutChart,
-    CardChart
+    CardChart,
+    Map
   },
 
   data: () => ({
