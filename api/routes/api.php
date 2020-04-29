@@ -38,6 +38,9 @@ Route::group([
         'users' => 'Modules\Users\UserController',
     ]);
 
+    // Roles
+    Route::apiResource('roles', 'Modules\Roles\RoleController')->only(['index']);
+
     // Archived users
     Route::get('users-archived/restore/{id}', 'Modules\Users\UserController@restore');
     Route::apiResource('users-archived', 'Modules\Users\ArchivedUserController')->only([
