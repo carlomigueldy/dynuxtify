@@ -15,6 +15,13 @@ this.$notifier.execute({
 })
 ```
 
+## Packages/Libraries Used
+
+- https://github.com/spatie/laravel-cors
+- https://github.com/404labfr/laravel-impersonate
+- https://github.com/spatie/activitylog
+- https://github.com/spatie/laravel-permission
+
 ## Build Setup
 
 ```bash
