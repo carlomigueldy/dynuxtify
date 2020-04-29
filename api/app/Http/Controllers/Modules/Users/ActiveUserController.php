@@ -21,13 +21,19 @@ class ActiveUserController extends Controller
     }
 
     /**
-     * Gets all of the active users from the past hour.
+     * Gets all of the active users 
+     * from specified number of hours.
      * 
+     * @param Integer e.g. 1 (hour)
      * @return Array
      */
-    public function activePastHour()
+    public function activePastHour($hours)
     {
-        $users = Active::usersWithinHours(1)
+        if ( !isset($hours) ) {
+            abort(403, 'The hours parameter must contain a value.');
+        }
+        
+        $users = Active::usersWithinHours($hours)
             ->mostRecent()
             ->get();
         
