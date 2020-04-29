@@ -21,6 +21,7 @@ this.$notifier.execute({
 - https://github.com/404labfr/laravel-impersonate
 - https://github.com/spatie/activitylog
 - https://github.com/spatie/laravel-permission
+- https://github.com/spatie/image-optimizer (to be added)
 
 ## Build Setup
 
