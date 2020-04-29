@@ -198,14 +198,10 @@ export default {
       try {
         await this.$auth.logout()
 
-        await this.$store.dispatch('alerts/execute', {
+        await this.$helpers.notify({
+          type: 'info',
           message: 'You have logged out.'
         })
-
-        await setTimeout(async() => {
-          await this.$router.push({ name: 'login' })
-        }, 1500)
-
       } catch (error) {
         console.log(error)
       }

@@ -6,8 +6,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    title: 'Nuxt Admin',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -22,7 +21,7 @@ export default {
   */
   loading: { 
     height: '3px',
-    color: '#1976d2',
+    color: colors.blue.darken2,
     throttle: 0,
     continuous: true,
   },
