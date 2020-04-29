@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-toolbar color="transparent" dark flat>
-      <v-toolbar-title class="display-1">Users</v-toolbar-title>
+      <v-toolbar-title>
+        <h2>Users</h2>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
