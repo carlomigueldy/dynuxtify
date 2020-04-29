@@ -48,7 +48,7 @@ export default {
   }),
   
   computed: {
-    ...mapFields('user', [
+    ...mapFields('users', [
       'form.name',
       'form.email',
       'form.role',

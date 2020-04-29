@@ -44,7 +44,7 @@
               <DataTable 
                 title="Users"
                 route="users"
-                :items="$store.state.user.users"
+                :items="$store.state.users.users"
                 :headers="headers"
               />
             </v-tab-item>
@@ -52,7 +52,7 @@
               <DataTable 
                 title="Users"
                 route="users"
-                :items="$store.state.user.users"
+                :items="$store.state.users.users"
                 :headers="headers"
               />
             </v-tab-item>
@@ -60,7 +60,7 @@
               <DataTable 
                 title="Users"
                 route="users"
-                :items="$store.state.user.users"
+                :items="$store.state.users.users"
                 :headers="headers"
               />
             </v-tab-item>

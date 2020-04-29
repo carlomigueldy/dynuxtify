@@ -43,7 +43,7 @@
               <DataTable 
                 title="Invoices"
                 route="invoices"
-                :items="$store.state.invoice.invoices"
+                :items="$store.state.invoices.invoices"
                 :headers="headers"
               />
             </v-tab-item>

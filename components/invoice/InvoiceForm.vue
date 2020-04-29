@@ -25,7 +25,7 @@ import { mapFields } from 'vuex-map-fields'
 
 export default {
   computed: {
-    ...mapFields('invoice', [
+    ...mapFields('invoices', [
       'form.invoice_date',
       'form.due_date',
       'form.days_overdue',

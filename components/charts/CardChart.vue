@@ -132,7 +132,7 @@ export default {
     // Method name and namespace from vuex
     // e.g. 'users/fetchAll'
     storeMethod: {
-      type: Object,
+      type: String,
       default: () => ''
     }
   },
