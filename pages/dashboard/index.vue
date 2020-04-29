@@ -1,5 +1,11 @@
 <template>
   <div>
+    <v-toolbar color="transparent" dark flat>
+      <v-toolbar-title>
+        <h2>Dashboard</h2>
+      </v-toolbar-title>
+    </v-toolbar>
+    
     <v-row justify="center" align="center">
       <v-col lg="11" md="11" sm="12" cols="12">
         <v-row>
@@ -80,19 +86,6 @@
           </v-col>
         </v-row>
 
-        <v-divider class="mb-10"></v-divider>
-
-        <v-row class="mb-10">
-          <v-col>
-            <v-card height="100%">
-              <v-card-title>Calendar</v-card-title>
-              <v-card-text>
-                <Calendar />
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-        
       </v-col>
     </v-row>
   </div>
@@ -100,7 +93,6 @@
 
 <script>
 import Count from '@/components/reporting/Count'
-import Calendar from '@/components/calendar/Calendar'
 import BarChart from '@/components/charts/BarChart'
 import LineChart from '@/components/charts/LineChart'
 import ScatterChart from '@/components/charts/ScatterChart'
@@ -109,7 +101,6 @@ import AreaChart from '@/components/charts/AreaChart'
 export default {
   components: {
     Count,
-    Calendar,
     BarChart,
     LineChart,
     ScatterChart,
