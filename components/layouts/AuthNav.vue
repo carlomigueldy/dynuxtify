@@ -234,9 +234,14 @@ export default {
         route: 'users'
       },
       {
-        icon: 'mdi-calendar',
+        icon: 'mdi-calendar-multiselect',
         title: 'Calendar',
         route: 'calendar',
+      },
+      {
+        icon: 'mdi-chart-bell-curve',
+        title: 'Reporting',
+        route: 'reporting'
       },
       {
         icon: 'mdi-language-javascript',
