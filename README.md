@@ -22,6 +22,7 @@ this.$notifier.execute({
 - https://github.com/spatie/activitylog
 - https://github.com/spatie/laravel-permission
 - https://github.com/spatie/image-optimizer (to be added)
+- https://github.com/spatie/laravel-database-mail-templates (to be added)
 
 ## Build Setup
 
