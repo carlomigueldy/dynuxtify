@@ -36,7 +36,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $softCascade = [
-
+        // 
     ];
     
     /**
@@ -66,6 +66,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Gets all of users addresses.
+     * 
+     * @return MorphMany
+     */
+    public function addresses()
+    {
+        return $this->morphMany('App\Address', 'addressable');
+    }
+    
     /**
      * Checks if user can impersonate.
      * 
