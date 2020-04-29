@@ -129,8 +129,7 @@
         :headers="headers"
         :search="search"
         :items="items"
-        multi-sort
-      >
+        multi-sort>
         <template v-slot:item.actions="{ item }">
           <v-btn icon>
             <v-icon>mdi-eye</v-icon>
@@ -142,6 +141,7 @@
       </v-data-table>
     </v-card>
 
+    <!-- START Quick create form -->
     <v-navigation-drawer 
       :width="
         $vuetify.breakpoint.xl
@@ -150,7 +150,7 @@
         ? '450' 
         : '100%'"
       :right="true"
-      :value="createDialog" 
+      v-model="createDialog" 
       :temporary="true"
       :touchless="true"
       app>
@@ -188,6 +188,7 @@
         </v-card>
       </v-form>
     </v-navigation-drawer>
+    <!-- END Quick create form -->
   </div>
 </template>
 
