@@ -15,7 +15,7 @@ this.$notifier.execute({
 })
 ```
 
-## Packages/Libraries Used
+## API: Packages
 
 - https://github.com/spatie/laravel-cors
 - https://github.com/404labfr/laravel-impersonate
@@ -30,6 +30,11 @@ this.$notifier.execute({
 - https://github.com/spatie/laravel-web-tinker (dev)
 - https://github.com/spatie/period (to be added; DATE PERIOD comparison)
 - https://github.com/spatie/regex (to be added) 
+- https://github.com/joshrainwater/active-users 
+
+## API: Dev Tools
+- /tinker for the web-tinker
+- /telescope for the activity logging including Job Queues, etc
 
 ## Build Setup
 
