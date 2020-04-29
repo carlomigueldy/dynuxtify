@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $with = [
-        'roles'
+        // 
     ];
 
     /**
@@ -111,5 +111,17 @@ class User extends Authenticatable
         }
         
         return $this->assignRole($role);
+    }
+
+    /**
+     * Gets the first role from array.
+     * 
+     * @return String
+     */
+    public function getFirstRole()
+    {
+        $roles = $this->getRoleNames()->toArray();
+
+        return array_shift($roles);
     }
 }
