@@ -67,7 +67,8 @@
       <v-overlay
         :absolute="true"
         :opacity="0.5"
-        :value="loading">
+        :value="loading"
+        z-index="0">
         <v-progress-circular
           indeterminate
           color="primary"
