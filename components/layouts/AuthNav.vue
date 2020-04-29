@@ -238,11 +238,6 @@ export default {
         route: 'users'
       },
       {
-        icon: 'mdi-file-table',
-        title: 'Invoices',
-        route: 'invoices',
-      },
-      {
         icon: 'mdi-calendar',
         title: 'Calendar',
         route: 'calendar',
