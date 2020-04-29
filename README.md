@@ -19,10 +19,17 @@ this.$notifier.execute({
 
 - https://github.com/spatie/laravel-cors
 - https://github.com/404labfr/laravel-impersonate
-- https://github.com/spatie/activitylog
+- https://github.com/spatie/activitylog (does not support Laravel 6+)
+- https://github.com/spatie/laravel-activitylog
 - https://github.com/spatie/laravel-permission
 - https://github.com/spatie/image-optimizer (to be added)
 - https://github.com/spatie/laravel-database-mail-templates (to be added)
+- https://github.com/spatie/laravel-medialibrary
+- https://github.com/spatie/laravel-query-builder (to be added; REST API query)
+- https://github.com/spatie/laravel-searchable (to be added; Fuzzy Searching)
+- https://github.com/spatie/laravel-web-tinker (dev)
+- https://github.com/spatie/period (to be added; DATE PERIOD comparison)
+- https://github.com/spatie/regex (to be added) 
 
 ## Build Setup
 
