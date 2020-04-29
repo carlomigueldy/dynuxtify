@@ -18,7 +18,7 @@ class AuthController extends Controller
      * @param  [string] password_confirmation
      * @return [string] message
      */
-    public function signup(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
