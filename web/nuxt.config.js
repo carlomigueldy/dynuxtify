@@ -72,8 +72,8 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-	  // baseURL: 'https://cors-anywhere.herokuapp.com/http://vawg.herokuapp.com/',
-	  baseURL: 'http://api-v2.childcare.io/', 
+	  baseURL: 'https://cors-anywhere.herokuapp.com/https://childcare-management-system.herokuapp.com/'
+	  // baseURL: 'http://api-v2.childcare.io/'
   },
   /*
   ** Auth module configuration
