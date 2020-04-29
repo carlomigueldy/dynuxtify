@@ -1,7 +1,28 @@
 <template>
   <div>
     <v-row justify="center" align="center">
-      <v-col lg="10" md="10" sm="12" cols="12">
+      <v-col lg="11" md="11" sm="12" cols="12">
+        <v-row>
+          <v-col>
+            <Count 
+              title="Users"
+              border-color="purple" 
+              :value="103"
+            />
+          </v-col>
+          <v-col>
+            <Count 
+              title="Leads"
+              border-color="red" 
+            />
+          </v-col>
+          <v-col>
+            <Count 
+              title="Sales"
+              border-color="orange" 
+            />
+          </v-col>
+        </v-row>
 
         <v-row class="mb-10">
           <v-col lg="6" md="6" sm="12" cols="12">
@@ -78,6 +99,7 @@
 </template>
 
 <script>
+import Count from '@/components/reporting/Count'
 import Calendar from '@/components/calendar/Calendar'
 import BarChart from '@/components/charts/BarChart'
 import LineChart from '@/components/charts/LineChart'
@@ -86,6 +108,7 @@ import AreaChart from '@/components/charts/AreaChart'
 
 export default {
   components: {
+    Count,
     Calendar,
     BarChart,
     LineChart,
