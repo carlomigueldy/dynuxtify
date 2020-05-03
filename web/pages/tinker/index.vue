@@ -22,76 +22,105 @@
     
     <v-row justify="center" align="center">
       <v-col lg="11" md="11" sm="12" cols="12">
-        <v-card>
-          <v-card-text>
-            <v-btn color="#448AFF" @click="count++">
-              Click Me
-            </v-btn>
-            <div>You have clicked it {{ count }} times.</div>
 
-            <v-btn color="primary" @click="$nuxt.$loading.start()">
-              Start Loading
-            </v-btn>
+        <v-row>
+          <v-col>
+            <v-card>
+              <v-card-text>
+                <v-simple-table>
+                  <thead>
+                    <th>Primary</th>
+                    <th>Info</th>
+                    <th>Secondary</th>
+                    <th>Warning</th>
+                    <th>Error</th>
+                    <th>Accent</th>
+                  </thead>
+                  <tbody>
+                    <td>
+                      <v-btn 
+                        color="primary">
+                        Primary
+                      </v-btn>
+                    </td>
+                    <td>
+                      <v-btn 
+                        color="info">
+                        Info
+                      </v-btn>
+                    </td>
+                    <td>
+                      <v-btn 
+                        color="secondary">
+                        Secondary
+                      </v-btn>
+                    </td>
+                    <td>
+                      <v-btn 
+                        color="warning">
+                        Warning
+                      </v-btn>
+                    </td>
+                    <td>
+                      <v-btn 
+                        color="error">
+                        Error
+                      </v-btn>
+                    </td>
+                    <td>
+                      <v-btn 
+                        color="accent">
+                        Accent
+                      </v-btn>
+                    </td>
+                  </tbody>
+                </v-simple-table>            
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
 
-            <v-btn color="#42A5F5" @click="$nuxt.$loading.finish()">
-              End Loading
-            </v-btn>
-
-            <v-btn>
-              Fetch
-            </v-btn>
-
-            <v-btn>
-              Fetch Uesr
-            </v-btn>
-
-            <v-btn 
-              color="teal darken-2" 
-              dark>
-              BUY PIZZA
-            </v-btn>
-
-            <div>
-              {{ $auth.loggedIn }}  
-            </div>
-          </v-card-text>
-          <v-card-text>
-            <FormBuilder 
-              :fields="fields"
-            />
-          </v-card-text>
-        </v-card>
+        <v-row>
+          <v-col>
+            <v-card>
+              <v-card-title class="font-weight-regular">SNACKBAR</v-card-title>
+              <v-card-text>
+                <v-btn 
+                  @click="snackbar = !snackbar" 
+                  text>
+                  Snackbar
+                </v-btn>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+        
       </v-col>
     </v-row>
+
+    <v-snackbar 
+      v-model="snackbar"
+      color="white"
+      class="black--text"
+      multi-line>
+      <v-icon>mdi-check</v-icon>
+      <span>
+        The snackbar has been checked.
+      </span>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
-import FormBuilder from '@/components/builder/FormBuilder'
-
 export default {
   head () {
     return {
       title: 'Nuxt Admin | Playground',
     }
   },
-  
-  components: {
-    FormBuilder
-  },
 
   data: () => ({
-    count: 0,
-    fields: [
-      {
-        component: 'v-text-field',
-        label: 'First Name',
-        outlined: false,
-        solo: false,
-        dense: false,
-        data: null,
-      },
-    ]
+    snackbar: false,
   })
 }
 </script>

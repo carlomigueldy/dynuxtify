@@ -40,10 +40,13 @@
       fixed
       dense
     app    >
-      <v-app-bar-nav-icon 
-        @click.stop="drawer = !drawer" 
-      />
-      
+      <v-btn
+        icon
+        @click="drawer = !drawer">
+        <v-icon 
+          v-text="drawer ? 'mdi-menu' : 'mdi-menu-open'"
+        ></v-icon>
+      </v-btn>
       <v-toolbar-title 
         v-text="title" 
       />
@@ -215,7 +218,7 @@ export default {
   },
   
 	data: () => ({
-		title: 'App Name',
+		title: 'Management System',
 		avatar: 'https://ui-avatars.com/api/?name=Carlo+Doe',
     clipped: false,
     drawer: true,

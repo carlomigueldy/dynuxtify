@@ -5,7 +5,7 @@
       :toolbarDark="isDark"
     />
 
-    <v-content class="grey lighten-4" app>
+    <v-content app>
       <div :class="`skewed ${pageTheme}`"></div>
       <v-container>
         <nuxt />
