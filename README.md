@@ -2,6 +2,14 @@
 
 > Nuxt js + Vuetify admin dashboard boilerplate design inspired by Google&#39;s Firebase.
 
+## Guides
+
+Deployment Guide
+https://gist.github.com/carlomigueldy/0e15c38952e55c6e5f1f5dc62fa836aa
+
+Self-Signed Certificate
+https://gist.github.com/carlomigueldy/eea8952368a2aedfc8b2453caafd729a
+
 ## Utilities
 
 $notifier.execute({ message, type })
