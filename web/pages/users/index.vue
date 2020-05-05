@@ -42,28 +42,28 @@
           <v-tabs-items v-model="tabs">
             <v-tab-item>
               <DataTable 
+                title="Active Users"
                 route="users"
                 refresh="users/fetchAll"
                 :items="$store.getters['users/activeUsers']"
-                :headers="headers"
                 :loading="loading"
               />
             </v-tab-item>
             <v-tab-item>
               <DataTable 
+                title="Inactive Users"
                 route="users"
                 refresh="users/fetchAll"
                 :items="$store.getters['users/inactiveUsers']"
-                :headers="headers"
                 :loading="loading"
               />
             </v-tab-item>
             <v-tab-item>
               <DataTable 
+                title="Archived Users"
                 route="users"
                 refresh="users/fetchAllArchived"
                 :items="$store.getters['users/archivedUsers']"
-                :headers="headers"
                 :loading="loading"
               />
             </v-tab-item>
@@ -111,29 +111,6 @@ export default {
   data: () => ({
     tabs: 0,
     loading: false,
-    headers: [
-      {
-        text: '#',
-        value: 'id'
-      },
-      {
-        text: 'Name',
-        value: 'name',
-      },
-      {
-        text: 'Email',
-        value: 'email',
-      },
-      {
-        text: 'Role',
-        value: 'role',
-      },
-      {
-        text: 'Actions',
-        value: 'actions',
-        sortable: false,
-      },
-    ],
   }),
 }
 </script>
