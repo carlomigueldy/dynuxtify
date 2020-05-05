@@ -263,6 +263,10 @@ export default {
         value: 'role.name',
       },
       {
+        text: 'Created',
+        value: 'created_at',
+      },
+      {
         text: 'Actions',
         value: 'actions',
         sortable: false,

@@ -1,3 +1,5 @@
+import { mapUTCDate, dateFormat } from '../utils/Util'
+
 export class User {
   constructor({ 
     name = null, 
@@ -25,5 +27,6 @@ export const mapUser = (obj) => ({
   name: obj.name,
   email: obj.email,
   role: obj.role,
-  created_at: obj.created_at,
+  authorized: obj.authorized,
+  created_at: dateFormat(mapUTCDate(obj.created_at)),
 })

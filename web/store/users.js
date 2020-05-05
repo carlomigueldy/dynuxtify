@@ -1,4 +1,4 @@
-import { User } from '../models/User.js'
+import { User, mapUser } from '../models/User.js'
 import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
@@ -11,12 +11,15 @@ export const state = () => ({
 
 export const getters = {
   activeUsers: state => state.users
-    .filter(data => data.authorized),
+    .filter(data => data.authorized)
+    .map( mapUser ),
 
   inactiveUsers: state => state.users
-    .filter(data => !data.authorized),
+    .filter(data => !data.authorized)
+    .map( mapUser ),
 
-  archivedUsers: state => state.archivedUsers,
+  archivedUsers: state => state.archivedUsers
+    .map( mapUser ),
   
   getField,
 }
