@@ -3,15 +3,20 @@
 namespace App;
 
 use App\Traits\UuidTrait;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Permission\Models\Role as SpatieRole;
+use Laravel\Passport\Client as OAuthClient; 
 
-class Role extends SpatieRole
-{
+class Passport extends OAuthClient
+{ 
     use UuidTrait;
     
+    /** 
+     * Indicates if the IDs are auto-incrementing. 
+     * 
+     * @var bool 
+     */ 
+    public $incrementing = false; 
+    
     protected $primaryKey = 'id';
-    public $incrementing = false;
 
     /**
      * The attributes that should be cast to native types.

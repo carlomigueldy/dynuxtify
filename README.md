@@ -59,6 +59,9 @@ this.$notifier.execute({
 Inserting into a polymorphic relationship
 Reference: https://laracasts.com/discuss/channels/eloquent/inserting-polymorphic-relations
 
+## API: Uuid
+- https://codeburst.io/laravel-passport-assigning-a-uuid-to-your-oauth-clients-211a9bbd5a6e
+
 ```
 $address = new Address([
   'address_line_1' => 'Maigo, Lanao del Norte',
