@@ -73,8 +73,8 @@ export default {
   */
   axios: {
     // baseURL: 'https://cors-anywhere.herokuapp.com/https://childcare-management-system.herokuapp.com/'
-    // baseURL: 'http://api.dynuxtify.io/',
-    baseURL: 'http://api.hefesto.site/',
+    baseURL: 'http://api.dynuxtify.io/',
+    // baseURL: 'http://api.hefesto.site/',
   },
   /*
   ** Auth module configuration

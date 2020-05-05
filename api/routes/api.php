@@ -48,8 +48,4 @@ Route::group([
         'show',
         'destroy'
     ]);
-    
-    // Active users
-    Route::get('users-active', 'Modules\Users\ActiveUserController@index');
-    Route::get('users-active/past-hours/{hours}', 'Modules\Users\ActiveUserController@activePastHour');
 });

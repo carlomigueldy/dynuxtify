@@ -1,7 +1,9 @@
-import { createUser, User } from '../models/User.js'
+import { User } from '../models/User.js'
 import { getField, updateField } from 'vuex-map-fields'
 
 export const state = () => ({
+  archivedUsers: [],
+  archivedUser: {},
   users: [],
   user: {},
   form: new User()
@@ -12,14 +14,17 @@ export const getters = {
 }
 
 export const mutations = {
+  SET_ARCHIVED_USERS: (state, payload) => 
+    state.archivedUsers = payload,
+
+  SET_ARCHIVED_USER: (state, payload) =>
+    state.archivedUser = payload,
+  
   SET_USERS: (state, payload) => 
     state.users = payload,
 
   SET_USER: (state, payload) =>
     state.user = payload,
-
-  ADD_USER: (state, payload) =>
-    state.users.push(payload),
 
   REMOVE_USER: (state, payload) => {
     const index = state.users.findIndex(d => d.id == payload)
@@ -45,14 +50,30 @@ export const actions = {
       commit('SET_USERS', data)
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Unable to retrieve data.'
+      })
     }
   },
 
-  async fetchAllDeleted({ commit }) {
+  /**
+   * Fetch all archived resources.
+   * 
+   * @param { Object } context 
+   */
+  async fetchAllArchived({ commit }) {
     try {
-      
+      const data = await this.$axios.$get('/api/users-archived')
+
+      console.assert(data.length > 0, "No users found")
+      commit('SET_ARCHIVED_USERS', data)
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Unable to retrieve data.'
+      })
     }
   },
 
@@ -64,9 +85,35 @@ export const actions = {
    */
   async fetch({ commit }, payload) {
     try {
-      // 
+      const data = await this.$axios.$get(`/api/users/${payload.id}`)
+
+      commit('SET_USER', data)
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Unable to retrieve data.'
+      })
+    }
+  },
+
+  /**
+   * Fetch a single resource.
+   * 
+   * @param { Object } payload
+   * # must have id 
+   */
+  async fetchArchived({ commit }, payload) {
+    try {
+      const data = await this.$axios.$get(`/api/users-archived/${payload.id}`)
+
+      commit('SET_ARCHIVED_USER', data)
+    } catch (error) {
+      console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Unable to retrieve data.'
+      })
     }
   },
   
@@ -78,37 +125,19 @@ export const actions = {
    */
   async add({ state, commit, dispatch }) {
     try {
-      const {
-        name,
-        role,
-        email,
-        phone_number,
-        password,
-      } = state.form
+      await this.$axios.$post('/api/users', state.form)
       
-      const user = createUser({
-        id: state.users.length + 1,
-        name,
-        role,
-        email,
-        phone_number,
-        password,
-      })
-
-      console.log(user)
-
-      commit('ADD_USER', user)
       commit('CLEAR_FORM')
-      dispatch('alerts/execute', {
+      await this.$helpers.notify({
         type: 'success',
         message: 'A new user has been added.',
-      }, { root: true })
+      })
     } catch (error) {
       console.log(error)
-      dispatch('alerts/execute', {
+      return await this.$helpers.notify({
         type: 'error',
         message: 'An user was not added.',
-      }, { root: true })
+      })
     }
   },
 
@@ -120,9 +149,20 @@ export const actions = {
    */
   async update({ state, commit, dispatch }, payload) {
     try {
-      // 
+      await this.$axios.$put(`/api/users/${payload.id}`, state.form)
+      
+      commit('CLEAR_FORM')
+      dispatch('fetch', payload.id)
+      await this.$helpers.notify({
+        type: 'success',
+        message: 'A user has been updated.',
+      })
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'An user was not updated.',
+      })
     }
   },
 
@@ -134,13 +174,19 @@ export const actions = {
    */
   async destroy({ commit, dispatch }, payload) {
     try {
-      commit('REMOVE_USER', payload)
-      dispatch('alerts/execute', {
+      await this.$axios.$delete(`/api/users/${payload.id}`)
+      
+      commit('REMOVE_USER', payload.id)
+      await this.$helpers.notify({
         type: 'success',
         message: 'A user has been removed.',
-      }, { root: true })
+      })
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'A user was not removed.',
+      })
     }
   },
 
@@ -150,11 +196,21 @@ export const actions = {
    * @param { Object } context 
    * @param { Object } payload 
    */
-  async restore({ commit, dispatch }, payload) {
+  async restore({ dispatch }, payload) {
     try {
-      // 
+      await this.$axios.$get(`/api/users-archived/restore/${payload.id}`)
+
+      dispatch('fetchAll')
+      return await this.$helpers.notify({
+        type: 'success',
+        message: 'A user has been restored.',
+      })
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'A user was not restored.',
+      })
     }
   },
 
@@ -166,9 +222,19 @@ export const actions = {
    */
   async forceDestroy({ commit, dispatch }, payload) {
     try {
-      // 
+      await this.$axios.$delete(`/api/users-archived/${payload.id}`)
+
+      dispatch('fetchAll')
+      return await this.$helpers.notify({
+        type: 'success',
+        message: 'A user has been permanently deleted.',
+      })
     } catch (error) {
       console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Could not process your request.',
+      })
     }
   },
 }
