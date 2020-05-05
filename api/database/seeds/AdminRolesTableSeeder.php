@@ -16,8 +16,15 @@ class AdminRolesTableSeeder extends Seeder
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         
-        $role = Role::create(['name' => 'super administrator']);
-        Role::create(['name' => 'administrator']);
+        $role = Role::create([
+            'name' => 'super administrator', 
+            'color' => 'red darken-2'
+        ]);
+
+        Role::create([
+            'name' => 'administrator',
+            'color' => 'blue darken-4'
+        ]);
 
         $permissions = [
             'create users',
