@@ -43,6 +43,9 @@ this.$notifier.execute({
 - https://github.com/mpociot/laravel-apidoc-generator (API doc generator)
 - https://laravel-apidoc-generator.readthedocs.io/en/latest/documenting.html
 
+## Nuxt: Packages
+- https://www.npmjs.com/package/export-to-csv (to be added)
+
 ## API: Dev Tools
 - /tinker for the web-tinker
 - /telescope for the activity logging including Job Queues, etc
