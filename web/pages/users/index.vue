@@ -42,26 +42,29 @@
           <v-tabs-items v-model="tabs">
             <v-tab-item>
               <DataTable 
-                title="Users"
                 route="users"
-                :items="$store.state.users.users"
+                refresh="users/fetchAll"
+                :items="$store.getters['users/activeUsers']"
                 :headers="headers"
+                :loading="loading"
               />
             </v-tab-item>
             <v-tab-item>
               <DataTable 
-                title="Users"
                 route="users"
-                :items="$store.state.users.users"
+                refresh="users/fetchAll"
+                :items="$store.getters['users/inactiveUsers']"
                 :headers="headers"
+                :loading="loading"
               />
             </v-tab-item>
             <v-tab-item>
               <DataTable 
-                title="Users"
                 route="users"
-                :items="$store.state.users.users"
+                refresh="users/fetchAllArchived"
+                :items="$store.getters['users/archivedUsers']"
                 :headers="headers"
+                :loading="loading"
               />
             </v-tab-item>
           </v-tabs-items>
@@ -72,7 +75,7 @@
 </template>
 
 <script>
-import DataTable from '@/components/user/DataTable'
+import DataTable from '@/components/users/DataTable'
 import axios from 'axios'
 
 export default {
@@ -81,13 +84,29 @@ export default {
       title: 'Nuxt Admin | Users',
     }
   },
-  
+
   components: {
     DataTable,
   },
 
+  async created() {
+    this.fetchAll()
+  },
+
+  methods: {
+    async fetchAll() {
+      this.loading = true
+      await this.$store.dispatch('users/fetchAll')
+      
+      await setTimeout(async () => {
+        this.loading = false
+      }, 1000)
+    }
+  },
+
   data: () => ({
     tabs: 0,
+    loading: false,
     headers: [
       {
         text: '#',

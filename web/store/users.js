@@ -10,6 +10,12 @@ export const state = () => ({
 })
 
 export const getters = {
+  activeUsers: state => state.users,
+
+  inactiveUsers: state => state.users,
+
+  archivedUsers: state => state.archivedUsers,
+  
   getField,
 }
 

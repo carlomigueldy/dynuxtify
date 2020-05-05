@@ -19,3 +19,11 @@ export class User {
 export const createUser = (data) => {
   return Object.freeze(new User(data))
 }
+
+export const mapUser = (obj) => ({
+  id: obj.id,
+  name: obj.name,
+  email: obj.email,
+  role: obj.role,
+  created_at: obj.created_at,
+})

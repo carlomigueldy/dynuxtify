@@ -38,8 +38,6 @@
 </template>
 
 <script>
-import DataTable from '@/components/user/DataTable'
-
 export default {
   head () {
     return {

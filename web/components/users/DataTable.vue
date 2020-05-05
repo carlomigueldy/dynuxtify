@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card flat>
+    <v-card :loading="loading" flat>
       <v-toolbar color="transparent" flat>
         <v-text-field
           prepend-inner-icon="mdi-magnify"
@@ -193,7 +193,7 @@
 </template>
 
 <script>
-import UserForm from '@/components/user/UserForm'
+import UserForm from '@/components/users/UserForm'
 
 export default {
   components: {
@@ -210,6 +210,11 @@ export default {
       type: String,
       default: () => 'users',
     },
+
+    refresh: {
+      type: String,
+      default: () => 'users/fetchAll'
+    },
     
     items: {
       type: Array,
@@ -220,6 +225,11 @@ export default {
       type: Array,
       default: () => []
     },
+
+    loading: {
+      type: Boolean,
+      default: () => false,
+    }
   },
 
   data: () => ({
@@ -249,9 +259,11 @@ export default {
   }),
 
   methods: {
-    reload() {
+    async reload() {
       this.refreshing = true
-      setTimeout(() => {
+      console.log(this.refresh)
+      await this.$store.dispatch(this.refresh)
+      await setTimeout(async () => {
         this.refreshing = false
       }, 1000)
     },
