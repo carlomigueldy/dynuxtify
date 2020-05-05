@@ -19,7 +19,11 @@ class ArchivedUserController extends Controller
             abort(403, 'You have no privileges for the requested resource.');
         }
         
-        $users = User::onlyTrashed()->get();
+        $users = User::onlyTrashed()->get()->map(function ($data) {
+            $data['role'] = $data->getFirstRole();
+
+            return $data;
+        });
 
         return response()->json($users);
     }
