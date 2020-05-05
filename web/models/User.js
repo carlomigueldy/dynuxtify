@@ -1,6 +1,5 @@
 export class User {
   constructor({ 
-    id = null, // test id
     name = null, 
     role = null, 
     email = null, 
@@ -8,7 +7,6 @@ export class User {
     password = null,
     password_confirmation = null,
   } = {}) {
-    this.id = id
     this.name = name 
     this.email = email 
     this.role = role 

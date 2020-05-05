@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Modules\Users;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -53,7 +54,9 @@ class UserController extends Controller
         ]);
 
         if ($request->has('role')) {
-            $user->setRole($request->role);
+            $role = Role::whereName( strtolower($request->get('role')) )->first();
+            
+            $user->assignRole($role);
         }
         
         return response()->json([
@@ -102,7 +105,9 @@ class UserController extends Controller
         ])->saveOrFail();
 
         if ($request->has('role')) {
-            $user->setRole($request->role);
+            $role = Role::whereName( strtolower($request->get('role')) )->first();
+            
+            $user->assignRole($role);
         }
 
         if ($request->has('password')) {

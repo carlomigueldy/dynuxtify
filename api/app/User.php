@@ -14,8 +14,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, 
-        HasRoles, 
+    use HasRoles,
+        Notifiable, 
         HasApiTokens, 
         Impersonate, 
         SoftDeletes,
@@ -94,23 +94,6 @@ class User extends Authenticatable
     public function canBeImpersonated()
     {
         return !$this->hasRole('super administrator');
-    }
-
-    /**
-     * Sets a role for the user.
-     * 
-     * @param String $role e.g. admin
-     * @return Object
-     */
-    public function setRole($role)
-    {
-        $role = Role::whereName('$role');
-
-        if ( !isset($role) ) {
-            return null;
-        }
-        
-        return $this->assignRole($role);
     }
 
     /**

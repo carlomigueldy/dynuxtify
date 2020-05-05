@@ -123,7 +123,7 @@ export const actions = {
    * @param { Object } context 
    * @param { Object } payload 
    */
-  async add({ state, commit, dispatch }) {
+  async create({ state, commit, dispatch }) {
     try {
       await this.$axios.$post('/api/users', state.form)
       

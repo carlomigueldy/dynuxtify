@@ -154,7 +154,7 @@
       :temporary="true"
       :touchless="true"
       app>
-      <v-form @submit.prevent="$store.dispatch('user/add')
+      <v-form @submit.prevent="$store.dispatch('users/create')
         .then(() => createDialog = !createDialog)">
         <v-card flat>
           <v-toolbar color="transparent" flat>
