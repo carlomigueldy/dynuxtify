@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $with = [
-        // 
+        'addresses'
     ];
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $softCascade = [
-        // 
+        'addresses'
     ];
     
     /**
