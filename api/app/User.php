@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\UuidTrait;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,8 +20,12 @@ class User extends Authenticatable
         HasApiTokens, 
         Impersonate, 
         SoftDeletes,
-        SoftCascadeTrait;
+        SoftCascadeTrait,
+        UuidTrait;
 
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    
     /**
      * The relationships always with the query.
      * 
@@ -64,6 +69,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'id' => 'string'
     ];
 
     /**

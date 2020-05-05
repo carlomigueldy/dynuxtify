@@ -1,9 +1,10 @@
 <?php
 
+use App\Permission;
+use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class AdminRolesTableSeeder extends Seeder
 {

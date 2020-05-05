@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\UuidTrait;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contact extends Model
 {
-    use SoftDeletes, SoftCascadeTrait;
+    use SoftDeletes, SoftCascadeTrait, UuidTrait;
 
     /**
      * The related models gets deleted when

@@ -14,9 +14,8 @@ class CreateAddressesTable extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('addressable_id');
-            $table->string('addressable_type');
+            $table->uuid('id')->primary();
+            $table->uuidMorphs('addressable');
             $table->string('address_line_1')->nullable();
             $table->string('address_line_2')->nullable();
             $table->string('street_address')->nullable();

@@ -14,9 +14,8 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('fileable_id');
-            $table->string('fileable_type');
+            $table->uuid('id')->primary();
+            $table->uuidMorphs('fileable');
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('full_path')->nullable();
