@@ -123,33 +123,6 @@
                   <v-list-item-title>Export to CSV</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-              <v-list-item
-                @click="exportToCSV(items, title)">
-                <v-list-item-action>
-                  <v-icon small>mdi-export</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Export to JSON</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item
-                @click="exportToCSV(items, title)">
-                <v-list-item-action>
-                  <v-icon small>mdi-export</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Export to PDF</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item
-                @click="exportToCSV(items, title)">
-                <v-list-item-action>
-                  <v-icon small>mdi-export</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Export to Excel</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
             </v-list>
           </v-card>
         </v-menu>
