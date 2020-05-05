@@ -103,7 +103,14 @@ class User extends Authenticatable
      */
     public function getFirstRole()
     {
-        $roles = $this->getRoleNames()->toArray();
+        $roles = $this->roles->toArray();
+
+        if (count($roles) <= 0) {
+            return [
+                'name' => 'Unassigned',
+                'color' => 'black'
+            ];
+        }
 
         return array_shift($roles);
     }
