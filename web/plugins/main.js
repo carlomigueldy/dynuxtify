@@ -1,9 +1,9 @@
-import { capitalize, csv } from '../utils/Util'
+import { capitalize, exportToCSV } from '../utils/Util'
 import Vue from 'vue'
 
 Vue.mixin({
   methods: {
-    async exportCSV(data, title) {
+    async exportToCSV(data, title) {
       if (data.length <= 0) {
         return this.$helpers.notify({
           type: 'info',
@@ -11,7 +11,7 @@ Vue.mixin({
         })
       }
       
-      return await csv(data, title)
+      return await exportToCSV(data, title)
     },
     
     capitalize(string) {
