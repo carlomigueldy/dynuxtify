@@ -10,9 +10,11 @@ export const state = () => ({
 })
 
 export const getters = {
-  activeUsers: state => state.users,
+  activeUsers: state => state.users
+    .filter(data => data.authorized),
 
-  inactiveUsers: state => state.users,
+  inactiveUsers: state => state.users
+    .filter(data => !data.authorized),
 
   archivedUsers: state => state.archivedUsers,
   

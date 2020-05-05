@@ -89,14 +89,18 @@ export default {
     DataTable,
   },
 
-  async created() {
+  created() {
     this.fetchAll()
   },
 
   methods: {
     async fetchAll() {
       this.loading = true
-      await this.$store.dispatch('users/fetchAll')
+      
+      await Promise.all([
+        this.$store.dispatch('users/fetchAll'),
+        this.$store.dispatch('users/fetchAllArchived')
+      ])
       
       await setTimeout(async () => {
         this.loading = false

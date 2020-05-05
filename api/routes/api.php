@@ -38,6 +38,10 @@ Route::group([
         'users' => 'Modules\Users\UserController',
     ]);
 
+    // User Authorization
+    Route::get('users-authorization/authorize/{user}', 'Modules\Users\UserAuthorizationController@authorize');
+    Route::get('users-authorization/unauthorize/{user}', 'Modules\Users\UserAuthorizationController@unauthorize');
+
     // Roles
     Route::apiResource('roles', 'Modules\Roles\RoleController')->only(['index']);
 
