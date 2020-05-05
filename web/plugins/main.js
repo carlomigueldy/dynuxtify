@@ -1,7 +1,23 @@
+import { capitalize, csv } from '../utils/Util'
 import Vue from 'vue'
 
 Vue.mixin({
   methods: {
+    async exportCSV(data, title) {
+      if (data.length <= 0) {
+        return this.$helpers.notify({
+          type: 'info',
+          message: 'Cannot export empty data.'
+        })
+      }
+      
+      return await csv(data, title)
+    },
+    
+    capitalize(string) {
+      return capitalize(string)
+    },
+    
     mapDate(date) {
       const d = new Date(date)
 

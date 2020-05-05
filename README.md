@@ -48,6 +48,7 @@ this.$notifier.execute({
 
 ## Nuxt: Packages
 - https://www.npmjs.com/package/export-to-csv (to be added)
+- https://www.npmjs.com/package/pdfkit 
 
 ## API: Dev Tools
 - /tinker for the web-tinker
