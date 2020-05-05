@@ -38,6 +38,7 @@
           </v-list>
         </v-menu>
 
+        <!-- START Date filter -->
         <v-menu 
           v-model="dateFilterMenu"
           :close-on-content-click="false"
@@ -87,12 +88,16 @@
             </v-card-actions>
           </v-card>
         </v-menu>
+        <!-- END Date filter -->
+        
         <v-btn 
           @click="reload()"
           :loading="refreshing" 
           icon>
           <v-icon>mdi-refresh</v-icon>
         </v-btn>
+
+        <!-- START Others -->
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" icon>
@@ -110,26 +115,59 @@
                 </v-list-item-content>
               </v-list-item>
               <v-list-item
-                :key="index"
-                v-for="(option, index) in options"
-                @click="selectedOption(option.ref)"
-              >
+                @click="exportToCSV(items, title)">
                 <v-list-item-action>
-                  <v-icon small v-text="option.icon"></v-icon>
+                  <v-icon small>mdi-export</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title v-text="option.title"></v-list-item-title>
+                  <v-list-item-title>Export to CSV</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item
+                @click="exportToCSV(items, title)">
+                <v-list-item-action>
+                  <v-icon small>mdi-export</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Export to JSON</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item
+                @click="exportToCSV(items, title)">
+                <v-list-item-action>
+                  <v-icon small>mdi-export</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Export to PDF</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item
+                @click="exportToCSV(items, title)">
+                <v-list-item-action>
+                  <v-icon small>mdi-export</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>Export to Excel</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
           </v-card>
         </v-menu>
+        <!-- END Others -->
       </v-toolbar>
       <v-data-table
         :headers="headers"
         :search="search"
         :items="items"
         multi-sort>
+        <template v-slot:item.role.name="{ item }">
+          <v-chip 
+            dark
+            label
+            :color="item.role.color"
+            v-text="capitalize(item.role.name)"
+          ></v-chip>
+        </template>
         <template v-slot:item.actions="{ item }">
           <v-btn icon>
             <v-icon>mdi-eye</v-icon>
@@ -221,11 +259,6 @@ export default {
       default: () => []
     },
 
-    headers: {
-      type: Array,
-      default: () => []
-    },
-
     loading: {
       type: Boolean,
       default: () => false,
@@ -239,6 +272,29 @@ export default {
     fromDate: null,
     toDate: null,
     search: null,
+    headers: [
+      {
+        text: '#',
+        value: 'id'
+      },
+      {
+        text: 'Name',
+        value: 'name',
+      },
+      {
+        text: 'Email',
+        value: 'email',
+      },
+      {
+        text: 'Role',
+        value: 'role.name',
+      },
+      {
+        text: 'Actions',
+        value: 'actions',
+        sortable: false,
+      },
+    ],
     options: [
       {
         ref: 'pdf',
