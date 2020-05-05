@@ -12,8 +12,7 @@
           v-for="(item, i) in pages"
           :key="i"
           :to="{ name: item.route }"
-          link
-        >
+          link>
           <v-list-item-action>
             <v-icon v-text="item.icon"></v-icon>
           </v-list-item-action>
@@ -39,7 +38,7 @@
       :dark="toolbarDark"
       fixed
       dense
-    app    >
+      app>
       <v-btn
         icon
         @click="drawer = !drawer">
@@ -47,9 +46,7 @@
           v-text="drawer ? 'mdi-menu' : 'mdi-menu-open'"
         ></v-icon>
       </v-btn>
-      <v-toolbar-title 
-        v-text="title" 
-      />
+      <v-toolbar-title v-text="title" />
 
       <v-spacer />
 
