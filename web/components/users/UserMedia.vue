@@ -1,5 +1,14 @@
 <template>
   <v-card flat>
+    <v-card-title class="font-weight-regular">
+      <v-icon left>mdi-image</v-icon>
+      Media
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-card-title>
+    <v-divider></v-divider>
     <v-card-text>
       User Media
     </v-card-text>
