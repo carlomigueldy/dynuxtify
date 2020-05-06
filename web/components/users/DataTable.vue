@@ -142,7 +142,7 @@
           ></v-chip>
         </template>
         <template v-slot:item.actions="{ item }">
-          <v-btn icon>
+          <v-btn :to="{ name: `${route}-id`, params: { id: item.id } }" icon>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
           <v-btn @click="$store.dispatch('user/destroy', item.id)" icon>
