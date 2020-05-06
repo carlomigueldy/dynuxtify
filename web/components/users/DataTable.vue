@@ -6,6 +6,7 @@
           prepend-inner-icon="mdi-magnify"
           v-model="search"
           label="Search by name, email, username or user ID"
+          background-color="grey lighten-3"
           solo
           flat
           single-line
@@ -17,12 +18,13 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn 
-              color="primary"
               text
               v-on="on"
-              v-if="showCreateBtn">
+              class="primary--text"
+              v-if="showCreateBtn"
+              outlined>
               <v-icon small left>mdi-plus-circle-outline</v-icon>
-              Add User
+              Create User
             </v-btn>
           </template>
           <v-list>
@@ -106,10 +108,10 @@
             </v-btn>
           </template>
           <v-card tile>
-            <v-list dense>
+            <v-list>
               <v-list-item @click="clearAllFilter()">
                 <v-list-item-action>
-                  <v-icon small>mdi-filter-remove-outline</v-icon>
+                  <v-icon>mdi-filter-remove-outline</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
                   <v-list-item-title>Clear Filters</v-list-item-title>
@@ -118,7 +120,7 @@
               <v-list-item
                 @click="exportToCSV(items, title)">
                 <v-list-item-action>
-                  <v-icon small>mdi-export</v-icon>
+                  <v-icon>mdi-export</v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
                   <v-list-item-title>Export to CSV</v-list-item-title>
@@ -130,10 +132,12 @@
         <!-- END Others -->
       </v-toolbar>
       <v-data-table
+        v-model="selected"
         :headers="headers"
         :search="search"
         :items="items"
-        multi-sort>
+        multi-sort
+        show-select>
         <template v-slot:item.role.name="{ item }">
           <v-chip 
             dark
@@ -146,7 +150,7 @@
           <v-btn :to="{ name: `${route}-id`, params: { id: item.id } }" icon>
             <v-icon>mdi-eye</v-icon>
           </v-btn>
-          <v-btn @click="$store.dispatch('user/destroy', item.id)" icon>
+          <v-btn @click="remove(item.id)" icon>
             <v-icon>mdi-delete</v-icon>
           </v-btn>
         </template>
@@ -201,6 +205,39 @@
       </v-form>
     </v-navigation-drawer>
     <!-- END Quick create form -->
+
+    <!-- START delete dialog -->
+    <v-dialog 
+      v-model="deleteDialog" 
+      max-width="350" 
+      scrollable>
+      <v-card>
+        <v-toolbar color="transparent" flat>
+          <v-toolbar-title 
+            class="font-weight-regular">
+            Delete Confirmation
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn @click="deleteDialog = !deleteDialog" icon>
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <v-card-text>
+          Are you sure want to delete this user?
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn 
+            class="red--text"
+            @click="$store.dispatch('users/destroy', id)
+            .then(() => deleteDialog = !deleteDialog )" 
+            text>
+            CONFIRM
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- END delete dialog -->
   </div>
 </template>
 
@@ -245,12 +282,15 @@ export default {
   },
 
   data: () => ({
+    id: null,
+    deleteDialog: false,
     createDialog: false,
     refreshing: false,
     dateFilterMenu: false,
     fromDate: null,
     toDate: null,
     search: null,
+    selected: [],
     headers: [
       {
         text: '#',
@@ -317,11 +357,11 @@ export default {
       this.fromDate = null
       this.toDate = null
     },
-    
-    selectedOption(ref) {
-      console.log(ref)
-    },
 
+    remove(id) {
+      this.id = id
+      this.deleteDialog = !this.deleteDialog
+    }    
   },
 }
 </script>

@@ -21,7 +21,7 @@ export default {
   */
   loading: { 
     height: '3px',
-    color: colors.blue.darken2,
+    color: colors.lightBlue.darken4,
     throttle: 0,
     continuous: true,
   },
@@ -117,6 +117,16 @@ export default {
     theme: {
       dark: false,
       themes: {
+        light: {
+          primary: colors.lightBlue.darken4,
+          // primary: colors.deepPurple.darken2,
+          accent: colors.lightBlue.darken4,
+          secondary: colors.grey.darken3,
+          info: colors.blue,
+          warning: colors.orange.darken1,
+          error: colors.red.accent2,
+          success: colors.green
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
@@ -125,7 +135,7 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
+        },
       }
     }
   },
