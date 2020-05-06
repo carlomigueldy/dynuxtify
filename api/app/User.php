@@ -4,6 +4,7 @@ namespace App;
 
 use App\Traits\UuidTrait;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,7 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Authorizable
 {
     use HasRoles,
         Notifiable, 

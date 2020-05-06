@@ -5,6 +5,8 @@ use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+// use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Permission;
 
 class AdminRolesTableSeeder extends Seeder
 {
@@ -18,12 +20,12 @@ class AdminRolesTableSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         
         $role = Role::create([
-            'name' => 'super administrator', 
+            'name' => 'super admin', 
             'color' => 'red darken-2'
         ]);
 
         Role::create([
-            'name' => 'administrator',
+            'name' => 'admin',
             'color' => 'blue darken-4'
         ]);
 
@@ -38,11 +40,13 @@ class AdminRolesTableSeeder extends Seeder
         ];
 
         foreach($permissions as $data) {
-            Permission::create(['name' => $data]);
+            $permission = Permission::create(['name' => $data]);
         }
-
-        $role->givePermissionTo(Permission::all());
         
+        // $role->syncPermissions(ModelsPermission::all());
+        $role->syncPermissions(Permission::all());
+        // $role->givePermissionTo($permission);
+
         User::create([
             'name' => 'Carlo Miguel Dy',
             'email' => 'admin@admin.com',
