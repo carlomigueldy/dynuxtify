@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h2>Summary</h2>
+  <v-card flat>
+    <v-toolbar-title>Summary</v-toolbar-title>
     <v-divider></v-divider>
-    <div>No summary available</div>
-  </div>
+    <v-card-text>
+      No summary available
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

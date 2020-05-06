@@ -19,7 +19,8 @@
             <v-btn 
               color="primary"
               text
-              v-on="on">
+              v-on="on"
+              v-if="showCreateBtn">
               <v-icon small left>mdi-plus-circle-outline</v-icon>
               Add User
             </v-btn>
@@ -233,6 +234,11 @@ export default {
     },
 
     loading: {
+      type: Boolean,
+      default: () => false,
+    },
+
+    showCreateBtn: {
       type: Boolean,
       default: () => false,
     }

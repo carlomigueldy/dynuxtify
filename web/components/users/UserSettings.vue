@@ -1,7 +1,9 @@
 <template>
-  <div>
-    User Settings
-  </div>
+  <v-card flat>
+    <v-card-text>
+      Settings
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

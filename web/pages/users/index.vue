@@ -38,7 +38,7 @@
         md="11" 
         sm="12" 
         cols="12">
-        <v-card>
+        <v-card min-height="30rem">
           <v-tabs-items v-model="tabs">
             <v-tab-item>
               <DataTable 
@@ -47,6 +47,7 @@
                 refresh="users/fetchAll"
                 :items="$store.getters['users/activeUsers']"
                 :loading="loading"
+                :show-create-btn="true"
               />
             </v-tab-item>
             <v-tab-item>

@@ -18,6 +18,12 @@
     <v-list>
       <v-list-item>
         <v-list-item-content>
+          <v-list-item-title>{{ authorized ? 'Active' : 'Inactive' }}</v-list-item-title>
+          <v-list-item-subtitle>Account Status</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>
           <v-list-item-title>{{ name }}</v-list-item-title>
           <v-list-item-subtitle>Full Name</v-list-item-subtitle>
         </v-list-item-content>
@@ -41,6 +47,7 @@ export default {
       'user.name',
       'user.email',
       'user.role',
+      'user.authorized',
     ])
   }
 }
