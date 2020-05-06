@@ -2,19 +2,25 @@ import { mapUTCDate, dateFormat } from '../utils/Util'
 
 export class User {
   constructor({ 
+    avatar = null,
     name = null, 
     role = null, 
     email = null, 
-    phone_number = null,
     password = null,
     password_confirmation = null,
+    work_phone = null,
+    home_phone = null,
+    mobile_phone = null,
   } = {}) {
+    this.avatar = avatar
     this.name = name 
     this.email = email 
     this.role = role 
-    this.phone_number = phone_number
     this.password = password
     this.password_confirmation = password_confirmation
+    this.work_phone = work_phone
+    this.home_phone = home_phone
+    this.mobile_phone = mobile_phone
   }
 }
 
