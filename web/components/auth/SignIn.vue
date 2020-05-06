@@ -22,21 +22,17 @@
       
       <v-text-field
         prepend-inner-icon="mdi-email-outline"
-        background-color="grey lighten-4"
         :disabled="loggingIn"
         v-model="credentials.email"
         label="Email"
-        solo
         flat
       ></v-text-field>
       <v-text-field
         label="Password"
         prepend-inner-icon="mdi-lock-outline"
-        background-color="grey lighten-4"
         :disabled="loggingIn"
         v-model="credentials.password"
         type="password"
-        solo
         flat
       ></v-text-field>
 

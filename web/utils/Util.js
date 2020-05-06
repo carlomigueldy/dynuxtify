@@ -70,9 +70,10 @@ export const capitalize = (str, lower = false) =>
  * @param { Array } data array of obj
  * @param { String } title title file 
  */
-export const exportToCSV = (data, title = 'Data List') => {
+export const exportToCSV = (data, title = 'Data List', filename = 'generated') => {
   const options = { 
     title,
+    filename,
     fieldSeparator: ',',
     quoteStrings: '"',
     decimalSeparator: '.',

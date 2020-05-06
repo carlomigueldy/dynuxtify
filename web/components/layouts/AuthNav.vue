@@ -80,6 +80,10 @@
         ></v-text-field>
       </v-col>
 
+      <v-btn @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon>
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
+
       <v-btn @click="notifDrawer = !notifDrawer" icon>
         <v-icon>mdi-bell</v-icon>
       </v-btn>

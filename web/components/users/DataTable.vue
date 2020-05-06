@@ -6,7 +6,6 @@
           prepend-inner-icon="mdi-magnify"
           v-model="search"
           label="Search by name, email, username or user ID"
-          background-color="grey lighten-3"
           solo
           flat
           single-line
