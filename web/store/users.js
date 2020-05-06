@@ -143,6 +143,7 @@ export const actions = {
         type: 'success',
         message: 'A new user has been added.',
       })
+      dispatch('fetchAll')
     } catch (error) {
       console.log(error)
       return await this.$helpers.notify({

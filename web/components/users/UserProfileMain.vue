@@ -1,6 +1,6 @@
 <template>
   <v-card flat>
-    <v-toolbar-title>Summary</v-toolbar-title>
+    <v-toolbar-title>Overview</v-toolbar-title>
     <v-divider></v-divider>
     <v-card-text>
       <v-list>
