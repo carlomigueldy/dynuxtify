@@ -77,6 +77,8 @@ class UserController extends Controller
             abort(403, 'You have no privileges for the requested resource.');
         }
         
+        $user['role'] = $user->getFirstRole();
+        
         return response()->json($user);
     }
 
