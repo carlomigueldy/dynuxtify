@@ -16,6 +16,14 @@ export const moneyFormat = (number) => {
 }
 
 /**
+ * Maps date to UTC in ISO string format.
+ * 
+ * @param { String } date 
+ * @return { String }
+ */
+export const dateFormatUTC = (date) => dateFormat(mapUTCDate(date))
+
+/**
  * Formats date readable for Vuetify components.
  * 
  * @param { String } date 
