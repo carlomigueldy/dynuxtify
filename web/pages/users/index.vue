@@ -44,7 +44,7 @@
               <DataTable 
                 title="Active Users"
                 route="users"
-                refresh="users/fetchAll"
+                action="users/fetchAll"
                 :items="$store.getters['users/activeUsers']"
                 :loading="loading"
                 :show-create-btn="true"
@@ -54,7 +54,7 @@
               <DataTable 
                 title="Inactive Users"
                 route="users"
-                refresh="users/fetchAll"
+                action="users/fetchAll"
                 :items="$store.getters['users/inactiveUsers']"
                 :loading="loading"
               />
@@ -63,7 +63,7 @@
               <DataTable 
                 title="Archived Users"
                 route="users"
-                refresh="users/fetchAllArchived"
+                action="users/fetchAllArchived"
                 :items="$store.getters['users/archivedUsers']"
                 :loading="loading"
               />

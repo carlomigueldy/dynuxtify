@@ -5,13 +5,39 @@
         <v-text-field
           prepend-inner-icon="mdi-magnify"
           v-model="search"
-          label="Search by name, email, username or user ID"
+          label="Filter by characters"
           solo
           flat
           single-line
           hide-details
           clearable
         ></v-text-field>
+        <v-dialog
+          ref="dialog"
+          v-model="dateFilter.dialog"
+          :return-value.sync="dateFilter.dates"
+          persistent
+          width="290px">
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              prepend-inner-icon="mdi-calendar"
+              hide-details
+              single-line
+              v-model="dateFilterRangeText"
+              label="Filter by dates"
+              solo
+              clearable
+              readonly
+              flat
+              v-on="on"
+            ></v-text-field>
+          </template>
+          <v-date-picker v-model="dateFilter.dates" range scrollable>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="dateFilter.dialog = false">CANCEL</v-btn>
+            <v-btn text color="primary" @click="$refs.dialog.save(dateFilter.dates)">OK</v-btn>
+          </v-date-picker>
+        </v-dialog>
         <v-toolbar-title></v-toolbar-title>
         <v-spacer></v-spacer>
         <v-menu offset-y>
@@ -21,7 +47,8 @@
               v-on="on"
               class="primary--text"
               v-if="showCreateBtn"
-              outlined>
+              outlined
+              large>
               <v-icon small left>mdi-plus-circle-outline</v-icon>
               Create User
             </v-btn>
@@ -40,58 +67,6 @@
           </v-list>
         </v-menu>
 
-        <!-- START Date filter -->
-        <v-menu 
-          v-model="dateFilterMenu"
-          :close-on-content-click="false"
-          offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn 
-              v-on="on"
-              icon>
-              <v-icon>mdi-filter-outline</v-icon>
-            </v-btn>
-          </template>
-          <v-card tile>
-            <v-toolbar color="transparent" dense flat>
-              <v-toolbar-title>
-                <div class="caption">
-                  Filter by Date Range
-                </div>
-              </v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn 
-                icon
-                small
-                @click="dateFilterMenu = false">
-                <v-icon small>mdi-close</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-card-text>
-              <v-text-field
-                v-model="fromDate"
-                label="From"
-                type="date"
-              ></v-text-field>
-              <v-text-field
-                v-model="toDate"
-                label="To"
-                type="date"
-              ></v-text-field>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn 
-                @click="clearDateFilter()"
-                color="primary" 
-                text>
-                Clear
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-menu>
-        <!-- END Date filter -->
-        
         <v-btn 
           @click="reload()"
           :loading="refreshing" 
@@ -103,28 +78,48 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn v-on="on" icon>
-              <v-icon>mdi-dots-vertical</v-icon>
+              <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
           </template>
           <v-card tile>
-            <v-list>
-              <v-list-item @click="clearAllFilter()">
-                <v-list-item-action>
-                  <v-icon>mdi-filter-remove-outline</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Clear Filters</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item
-                @click="exportToCSV(items, title)">
-                <v-list-item-action>
-                  <v-icon>mdi-export</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>Export to CSV</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+            <v-list dense>
+              <v-subheader>Actions {{ selectedText }}</v-subheader>
+              <v-list-item-group>
+                <v-list-item @click="clearAllFilter()">
+                  <v-list-item-content>
+                    <v-list-item-title>Activate all selected</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item @click="clearAllFilter()">
+                  <v-list-item-content>
+                    <v-list-item-title>Deactivate all selected</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item @click="clearAllFilter()">
+                  <v-list-item-content>
+                    <v-list-item-title>Delete all selected</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+
+              <v-subheader>Export</v-subheader>
+              <v-list-item-group>
+                <v-list-item
+                  @click="exportToCSV(items, title)">
+                  <v-list-item-content>
+                    <v-list-item-title>Export to CSV</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+
+              <v-subheader>Others</v-subheader>
+              <v-list-item-group>
+                <v-list-item @click="clearAllFilter()">
+                  <v-list-item-content>
+                    <v-list-item-title>Clear Filters</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
             </v-list>
           </v-card>
         </v-menu>
@@ -135,6 +130,7 @@
         :headers="headers"
         :search="search"
         :items="items"
+        :loading="refreshing"
         multi-sort
         show-select>
         <template v-slot:item.role.name="{ item }">
@@ -156,7 +152,45 @@
       </v-data-table>
     </v-card>
 
-    <!-- START Quick create form -->
+    <!-- START dialog quick create form -->
+    <v-dialog 
+      v-model="createDialog" 
+      max-width="450"
+      scrollable>
+      <v-form @submit.prevent="$store.dispatch('users/create')
+        .then(() => createDialog = !createDialog)">
+        <v-card flat>
+          <v-toolbar color="primary" dark flat>
+            <v-toolbar-title>Create a User</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn @click="createDialog = !createDialog" icon>
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <v-card-text>
+            <UserQuickFields />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn 
+              @click="createDialog = !createDialog"
+              color="primary"
+              text>
+              CANCEL
+            </v-btn>
+            <v-btn 
+              color="primary"
+              type="submit" 
+              text>
+              SUBMIT
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-form>
+    </v-dialog>
+    <!-- END dialog quick create form -->
+
+    <!-- START nav drawer quick create form -->
     <v-navigation-drawer 
       :width="
         $vuetify.breakpoint.xl
@@ -165,7 +199,6 @@
         ? '450' 
         : '100%'"
       :right="true"
-      v-model="createDialog" 
       :temporary="true"
       :touchless="true"
       app>
@@ -180,7 +213,7 @@
             </v-btn>
           </v-toolbar>
           <v-card-text>
-            <UserForm />
+            <UserQuickFields />
             <v-btn 
               class="text-uppercase mb-3"
               @click="createDialog = !createDialog"
@@ -203,7 +236,7 @@
         </v-card>
       </v-form>
     </v-navigation-drawer>
-    <!-- END Quick create form -->
+    <!-- END nav drawer quick create form -->
 
     <!-- START delete dialog -->
     <v-dialog 
@@ -241,11 +274,11 @@
 </template>
 
 <script>
-import UserForm from '@/components/users/UserForm'
+import UserQuickFields from '@/components/users/UserQuickFields'
 
 export default {
   components: {
-    UserForm
+    UserQuickFields
   },
   
   props: {
@@ -259,7 +292,7 @@ export default {
       default: () => 'users',
     },
 
-    refresh: {
+    action: {
       type: String,
       default: () => 'users/fetchAll'
     },
@@ -280,14 +313,26 @@ export default {
     }
   },
 
+  computed: {
+    dateFilterRangeText () {
+      return this.dateFilter.dates.join(' ~ ')
+    },
+
+    selectedText () {
+      return this.selected.length > 0 ? `(${this.selected.length} selected)` : ''
+    }
+  },
+
   data: () => ({
     id: null,
     deleteDialog: false,
     createDialog: false,
     refreshing: false,
-    dateFilterMenu: false,
-    fromDate: null,
-    toDate: null,
+    dateFilter: {
+      dates: [],
+      dialog: false,
+    },
+    maxDate: null,
     search: null,
     selected: [],
     headers: [
@@ -339,8 +384,7 @@ export default {
   methods: {
     async reload() {
       this.refreshing = true
-      console.log(this.refresh)
-      await this.$store.dispatch(this.refresh)
+      await this.$store.dispatch(this.action)
       await setTimeout(async () => {
         this.refreshing = false
       }, 1000)
@@ -348,13 +392,13 @@ export default {
     
     clearAllFilter() {
       this.search = null
-      this.fromDate = null
-      this.toDate = null
+      this.minDate = null
+      this.maxDate = null
     },
     
     clearDateFilter() {
-      this.fromDate = null
-      this.toDate = null
+      this.minDate = null
+      this.maxDate = null
     },
 
     remove(id) {

@@ -17,6 +17,7 @@
     <v-text-field
       label="Email"
       v-model="email"
+      append-icon="mdi-email-outline"
       filled
     ></v-text-field>
     <v-text-field
