@@ -25,6 +25,7 @@
         :disabled="loggingIn"
         v-model="credentials.email"
         label="Email"
+        solo
         flat
       ></v-text-field>
       <v-text-field
@@ -33,6 +34,7 @@
         :disabled="loggingIn"
         v-model="credentials.password"
         type="password"
+        solo
         flat
       ></v-text-field>
 
