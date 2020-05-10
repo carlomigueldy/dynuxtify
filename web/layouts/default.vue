@@ -7,7 +7,7 @@
 
     <v-content app>
       <div :class="`skewed ${pageTheme}`"></div>
-      <v-container>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-content>

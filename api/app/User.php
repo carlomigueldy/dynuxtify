@@ -9,17 +9,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasRoles,
         Notifiable, 
         HasApiTokens, 
         Impersonate, 
         SoftDeletes,
-        SoftCascadeTrait;
+        SoftCascadeTrait,
+        HasMediaTrait;
 
     /**
      * The relationships always with the query.
@@ -27,7 +30,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $with = [
-        // 
+        'addresses'
     ];
 
     /**
@@ -36,7 +39,7 @@ class User extends Authenticatable
      * @var Array
      */
     protected $softCascade = [
-        // 
+        'addresses'
     ];
     
     /**
@@ -83,7 +86,7 @@ class User extends Authenticatable
      */
     public function canImpersonate()
     {
-        return $this->hasRole('super administrator');
+        return $this->hasRole('super admin');
     }
 
     /**
@@ -93,7 +96,7 @@ class User extends Authenticatable
      */
     public function canBeImpersonated()
     {
-        return !$this->hasRole('super administrator');
+        return !$this->hasRole('super admin');
     }
 
     /**

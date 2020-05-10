@@ -20,11 +20,16 @@ class UserController extends Controller
             abort(403, 'You have no privileges for the requested resource.');
         }
         
-        $users = User::get()->map(function ($data) {
-            $data['role'] = $data->getFirstRole();
+        $users = User::get()
+            ->filter(function ($user) {
+                return !$user->hasRole('super administrator');
+            })
+            ->values()
+            ->map(function ($user) {
+                $user['role'] = $user->getFirstRole();
 
-            return $data;
-        });
+                return $user;
+            });
         
         return response()->json($users);
     }
@@ -76,6 +81,8 @@ class UserController extends Controller
         if ( !auth()->user()->can('read users') ) {
             abort(403, 'You have no privileges for the requested resource.');
         }
+        
+        $user['role'] = $user->getFirstRole();
         
         return response()->json($user);
     }

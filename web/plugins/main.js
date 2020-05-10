@@ -3,6 +3,10 @@ import Vue from 'vue'
 
 Vue.mixin({
   methods: {
+    dateFormatUTC(date) {
+      return dateFormatUTC(date)
+    },
+    
     async exportToCSV(data, title) {
       if (data.length <= 0) {
         return this.$helpers.notify({
