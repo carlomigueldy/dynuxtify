@@ -12,6 +12,8 @@
           hide-details
           clearable
         ></v-text-field>
+        
+        <!-- START date filter -->
         <v-dialog
           ref="dialog"
           v-model="dateFilter.dialog"
@@ -38,8 +40,11 @@
             <v-btn text color="primary" @click="$refs.dialog.save(dateFilter.dates)">OK</v-btn>
           </v-date-picker>
         </v-dialog>
+        <!-- END date filter -->
         <v-toolbar-title></v-toolbar-title>
         <v-spacer></v-spacer>
+
+        <!-- START create user button -->
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn 
@@ -66,6 +71,7 @@
             </v-list-item>
           </v-list>
         </v-menu>
+        <!-- END create user button -->
 
         <v-btn 
           @click="reload()"
@@ -83,24 +89,26 @@
           </template>
           <v-card tile>
             <v-list dense>
-              <v-subheader>Actions {{ selectedText }}</v-subheader>
-              <v-list-item-group>
-                <v-list-item @click="clearAllFilter()">
-                  <v-list-item-content>
-                    <v-list-item-title>Activate all selected</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click="clearAllFilter()">
-                  <v-list-item-content>
-                    <v-list-item-title>Deactivate all selected</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-list-item @click="clearAllFilter()">
-                  <v-list-item-content>
-                    <v-list-item-title>Delete all selected</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list-item-group>
+              <slot name="actions" :selected-text="selectedText">
+                <v-subheader>Actions {{ selectedText }}</v-subheader>
+                <v-list-item-group>
+                  <v-list-item @click="clearAllFilter()">
+                    <v-list-item-content>
+                      <v-list-item-title>Activate all selected</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click="clearAllFilter()">
+                    <v-list-item-content>
+                      <v-list-item-title>Deactivate all selected</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-list-item @click="clearAllFilter()">
+                    <v-list-item-content>
+                      <v-list-item-title>Delete all selected</v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </slot>
 
               <v-subheader>Export</v-subheader>
               <v-list-item-group>
@@ -292,7 +300,7 @@ export default {
       default: () => 'users',
     },
 
-    action: {
+    refreshAction: {
       type: String,
       default: () => 'users/fetchAll'
     },
@@ -384,7 +392,7 @@ export default {
   methods: {
     async reload() {
       this.refreshing = true
-      await this.$store.dispatch(this.action)
+      await this.$store.dispatch(this.refreshAction)
       await setTimeout(async () => {
         this.refreshing = false
       }, 1000)

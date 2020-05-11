@@ -9,8 +9,8 @@
       </v-btn>
     </v-card-title>
     <v-divider></v-divider>
-    <v-card-text>
-      User Media
+    <v-card-text class="d-flex justify-center align-center fill-height">
+      Not available
     </v-card-text>
   </v-card>
 </template>

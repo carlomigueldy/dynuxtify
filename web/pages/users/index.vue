@@ -26,7 +26,7 @@
       v-model="tabs">
       <v-tab class="text-none">Active</v-tab>
       <v-tab class="text-none">Inactive</v-tab>
-      <v-tab class="text-none">Trashed</v-tab>
+      <v-tab class="text-none">Archived</v-tab>
     </v-tabs>
     <v-divider class="mb-10"></v-divider>
 
@@ -41,32 +41,42 @@
         <v-card min-height="30rem">
           <v-tabs-items v-model="tabs">
             <v-tab-item>
-              <DataTable 
+              <data-table-component 
                 title="Active Users"
                 route="users"
-                action="users/fetchAll"
+                refresh-action="users/fetchAll"
                 :items="$store.getters['users/activeUsers']"
                 :loading="loading"
                 :show-create-btn="true"
-              />
+              ></data-table-component>
             </v-tab-item>
             <v-tab-item>
-              <DataTable 
+              <data-table-component 
                 title="Inactive Users"
                 route="users"
-                action="users/fetchAll"
+                refresh-action="users/fetchAllDeactivated"
                 :items="$store.getters['users/inactiveUsers']"
                 :loading="loading"
-              />
+              ></data-table-component>
             </v-tab-item>
             <v-tab-item>
-              <DataTable 
+              <data-table-component 
                 title="Archived Users"
                 route="users"
-                action="users/fetchAllArchived"
+                refresh-action="users/fetchAllArchived"
                 :items="$store.getters['users/archivedUsers']"
-                :loading="loading"
-              />
+                :loading="loading">
+                <template v-slot:actions="{ selectedText }">
+                  <v-subheader>Actions {{ selectedText }}</v-subheader>
+                  <v-list-item-group>
+                    <v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title>Permanently delete all selected</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </template>
+              </data-table-component>
             </v-tab-item>
           </v-tabs-items>
         </v-card>
@@ -76,7 +86,7 @@
 </template>
 
 <script>
-import DataTable from '@/components/users/DataTable'
+import DataTableComponent from '@/components/users/DataTable'
 import axios from 'axios'
 
 export default {
@@ -87,7 +97,7 @@ export default {
   },
 
   components: {
-    DataTable,
+    DataTableComponent,
   },
 
   created() {

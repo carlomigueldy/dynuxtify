@@ -69,6 +69,26 @@ export const actions = {
   },
 
   /**
+   * Fetch all resources.
+   * 
+   * @param { Object } context 
+   */
+  async fetchAllDeactivated({ commit }) {
+    try {
+      const data = await this.$axios.$get('/api/users')
+
+      console.assert(data.length > 0, "No users found")
+      commit('SET_USERS', data)
+    } catch (error) {
+      console.log(error)
+      return await this.$helpers.notify({
+        type: 'error',
+        message: 'Unable to retrieve data.'
+      })
+    }
+  },
+
+  /**
    * Fetch all archived resources.
    * 
    * @param { Object } context 

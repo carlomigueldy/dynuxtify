@@ -9,24 +9,8 @@
       </v-btn>
     </v-card-title>
     <v-divider></v-divider>
-    <v-card-text>
-      <v-row>
-        <v-col>
-          <v-switch
-            label="Allow login"
-            color="primary"
-          ></v-switch>
-          <v-switch
-            label="Receive notifications"
-            color="primary"
-          ></v-switch>
-        </v-col>
-        <v-col>
-          <v-select
-            solo
-          ></v-select>
-        </v-col>
-      </v-row>
+    <v-card-text class="d-flex justify-center align-center fill-height">
+      Not available
     </v-card-text>
   </v-card>
 </template>
