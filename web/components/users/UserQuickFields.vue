@@ -3,7 +3,7 @@
     <v-text-field
       label="Name"
       v-model="name"
-      filled
+      outlined
     ></v-text-field>
     <v-autocomplete
       label="Role"
@@ -12,13 +12,13 @@
         'Administrator',
         'User',
       ]"
-      filled
+      outlined
     ></v-autocomplete>
     <v-text-field
       label="Email"
       v-model="email"
       append-icon="mdi-email-outline"
-      filled
+      outlined
     ></v-text-field>
     <v-text-field
       label="Password"
@@ -26,7 +26,7 @@
       :type="showPassword ? 'text' : 'password'"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="showPassword = !showPassword"
-      filled
+      outlined
     ></v-text-field>
     <v-text-field
       label="Confirmation"
@@ -34,7 +34,7 @@
       :type="showPasswordConfirmation ? 'text' : 'password'"
       :append-icon="showPasswordConfirmation ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="showPasswordConfirmation = !showPasswordConfirmation"
-      filled
+      outlined
     ></v-text-field>
   </div>
 </template>
