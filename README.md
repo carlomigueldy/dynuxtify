@@ -13,6 +13,9 @@ https://gist.github.com/carlomigueldy/eea8952368a2aedfc8b2453caafd729a
 Let'sEncrypt SSL Cert
 https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
 
+Using Google Drive API as Laravel Storage driver
+https://gist.github.com/carlomigueldy/492c3bc424b6c5a323767130b67e343a
+
 ## Utilities
 
 $notifier.execute({ message, type })
