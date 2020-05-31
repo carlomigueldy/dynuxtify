@@ -48,6 +48,7 @@ this.$notifier.execute({
 - https://github.com/Askedio/laravel-soft-cascade 
 - https://github.com/mpociot/laravel-apidoc-generator (API doc generator)
 - https://laravel-apidoc-generator.readthedocs.io/en/latest/documenting.html
+- https://docs.spatie.be/laravel-resource-links/v1/introduction/
 
 ## Nuxt: Packages
 - https://www.npmjs.com/package/export-to-csv (to be added)
