@@ -16,6 +16,9 @@ https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-
 Using Google Drive API as Laravel Storage driver
 https://gist.github.com/carlomigueldy/492c3bc424b6c5a323767130b67e343a
 
+Laravel Helpers
+https://stackoverflow.com/questions/28290332/best-practices-for-custom-helpers-in-laravel-5
+
 ## Utilities
 
 $notifier.execute({ message, type })
