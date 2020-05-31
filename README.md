@@ -76,6 +76,10 @@ $user = User::first();
 $query = $user->addresses()->save($address);
 ```
 
+## Issues
+- Latest version media library installation from Spatie https://github.com/spatie/laravel-medialibrary/issues/1567 
+
+
 ## Build Setup
 
 ```bash
